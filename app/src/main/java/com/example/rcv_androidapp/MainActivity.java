@@ -1,6 +1,11 @@
 package com.example.rcv_androidapp;
 
 import android.os.Bundle;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +17,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.rcv_androidapp.databinding.ActivityMainBinding;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -20,6 +26,8 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
 
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("mongodb+srv://admin:9ManRwLvHLC4Ywyz@ranked-choice-voting-db.768wv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+                .baseUrl("https://jsonplaceholder.typicode.com/")
                 .build();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -85,10 +93,11 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
     public interface APIService {
 
-        @GET("posts")
-        Call<List> getPosts();
+        //@GET("posts")
+        //Call<List> getPosts();
 
     }
 }
