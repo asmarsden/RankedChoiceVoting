@@ -27,7 +27,9 @@ However, at the moment there are no fast, seamless options for implementing rank
 
 <a href="https://asmarsden.github.io/ProjectWebApp/">Placeholder Website for Web App</a>
 
-<a href="https://www.pivotaltracker.com/n/projects/2531907">Pivotal Tracker Task Management Project</a>
+<a href="https://www.pivotaltracker.com/n/projects/2531907">Pivotal Tracker Task Management Project (defunct)</a>
+
+<a href="https://trello.com/b/aFmcoupn/rcv-app">Trello Task Tracker for Project</a>
 
 <a href="https://github.com/asmarsden/RankedChoiceVoting">Main Github Repository</a>
 
