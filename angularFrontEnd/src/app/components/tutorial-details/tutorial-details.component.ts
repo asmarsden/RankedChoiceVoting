@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Tutorial } from 'src/app/models/tutorial.model';
 
 @Component({
   selector: 'app-tutorial-details',
@@ -8,7 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./tutorial-details.component.css']
 })
 export class TutorialDetailsComponent implements OnInit {
-  currentTutorial = null;
+  currentTutorial: Tutorial = {
+    title: '',
+    description: '',
+    published: false
+  };
   message = '';
 
   constructor(
@@ -16,12 +21,12 @@ export class TutorialDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.message = '';
-    this.getTutorial(this.route.snapshot.paramMap.get('id'));
+    this.getTutorial(this.route.snapshot.params.id);
   }
 
-  getTutorial(id) {
+  getTutorial(id: string): void {
     this.tutorialService.get(id)
       .subscribe(
         data => {
@@ -33,37 +38,42 @@ export class TutorialDetailsComponent implements OnInit {
         });
   }
 
-  updatePublished(status) {
+  updatePublished(status: boolean): void {
     const data = {
       title: this.currentTutorial.title,
       description: this.currentTutorial.description,
       published: status
     };
 
+    this.message = '';
+
     this.tutorialService.update(this.currentTutorial.id, data)
       .subscribe(
         response => {
           this.currentTutorial.published = status;
           console.log(response);
+          this.message = response.message ? response.message : 'This tutorial was updated successfully!';
         },
         error => {
           console.log(error);
         });
   }
 
-  updateTutorial() {
+  updateTutorial(): void {
+    this.message = '';
+
     this.tutorialService.update(this.currentTutorial.id, this.currentTutorial)
       .subscribe(
         response => {
           console.log(response);
-          this.message = 'The tutorial was updated successfully!';
+          this.message = response.message ? response.message : 'This tutorial was updated successfully!';
         },
         error => {
           console.log(error);
         });
   }
 
-  deleteTutorial() {
+  deleteTutorial(): void {
     this.tutorialService.delete(this.currentTutorial.id)
       .subscribe(
         response => {

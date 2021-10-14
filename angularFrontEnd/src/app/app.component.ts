@@ -1,14 +1,10 @@
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { Component } from '@angular/core';
 
-@NgModule({
-  declarations: [ ... ],
-  imports: [
-    ...
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class AppModule { }
+export class AppComponent {
+  title = 'Angular 11 Crud';
+}

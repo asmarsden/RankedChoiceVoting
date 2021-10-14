@@ -1,4 +1,5 @@
-<div *ngIf="currentTutorial" class="edit-form">
+<div>
+  <div *ngIf="currentTutorial.id" class="edit-form">
     <h4>Tutorial</h4>
     <form>
       <div class="form-group">
@@ -21,13 +22,13 @@
           name="description"
         />
       </div>
-  
+
       <div class="form-group">
         <label><strong>Status:</strong></label>
         {{ currentTutorial.published ? "Published" : "Pending" }}
       </div>
     </form>
-  
+
     <button
       class="badge badge-primary mr-2"
       *ngIf="currentTutorial.published"
@@ -42,19 +43,23 @@
     >
       Publish
     </button>
-  
+
     <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
       Delete
     </button>
-  
-    <button type="submit" class="badge badge-success" (click)="updateTutorial()">
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateTutorial()"
+    >
       Update
     </button>
     <p>{{ message }}</p>
   </div>
-  
-  <div *ngIf="!currentTutorial">
+
+  <div *ngIf="!currentTutorial.id">
     <br />
     <p>Cannot access this Tutorial...</p>
   </div>
-  
+</div>
