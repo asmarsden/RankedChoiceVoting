@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //------------
-        setContentView(R.layout.fragment_first);
+        //setContentView(R.layout.fragment_first);
 
-        textViewResult = findViewById(R.id.textview_first);
+        //textViewResult = findViewById(R.id.textview_first);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
 
                 if(!response.isSuccessful()) {
-                    textViewResult.setText("Code: " + response.code());
+                    //textViewResult.setText("Code: " + response.code());
                     return;
                 }
 
@@ -69,14 +69,15 @@ public class MainActivity extends AppCompatActivity {
                     content += "Title: " + post.getTitle() + "\n";
                     content += "Text: " + post.getText() + "\n\n";
 
-                    textViewResult.append(content);
+                    //textViewResult.append(content);
                     System.out.println(content);
                 }
             }
 
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
-                textViewResult.setText(t.getMessage());
+                //textViewResult.setText(t.getMessage());
+                System.out.println(t.getMessage());
             }
         });
         //------------
