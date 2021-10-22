@@ -10,4 +10,15 @@ public class User{
 	public String userID;
 	
 	public String userName;
+	
+	@Override
+	public String getUsername()
+	{
+		return username;
+	}
+	@Override
+	public String getUserID()
+	{
+		return userID;
+	}
 }

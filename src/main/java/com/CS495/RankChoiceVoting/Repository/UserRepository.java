@@ -6,5 +6,5 @@ import com.CS495.RankChoiceVoting.Model.User;
 
 public interface UserRepository extends MongoRepository<User, String> {
 	
-
+	User findUserByUserID (String userID);
 }
