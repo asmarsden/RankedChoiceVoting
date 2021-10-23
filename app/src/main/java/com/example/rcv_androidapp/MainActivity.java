@@ -28,6 +28,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,9 +38,12 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private TextView textViewResult;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         //------------
         //setContentView(R.layout.fragment_first);
 
