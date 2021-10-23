@@ -3,6 +3,7 @@ package com.example.rcv_androidapp;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -91,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton btnNewPoll = findViewById(R.id.fab);
+        //Button btnNewPoll = findViewById(R.id.fab);
+        btnNewPoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Initialize temp variables
