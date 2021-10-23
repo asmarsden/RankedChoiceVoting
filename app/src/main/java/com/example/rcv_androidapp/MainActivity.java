@@ -44,32 +44,36 @@ public class MainActivity extends AppCompatActivity {
         //textViewResult = findViewById(R.id.textview_first);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com/")
+                .baseUrl("https://localhost:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+        VotingApi votingApi = retrofit.create(VotingApi.class);
 
-        Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
+        Call<List<Poll>> call = votingApi.getPolls();
 
-        call.enqueue(new Callback<List<Post>>() {
+        call.enqueue(new Callback<List<Poll>>() {
 
             @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+            public void onResponse(Call<List<Poll>> call, Response<List<Poll>> response) {
 
                 if(!response.isSuccessful()) {
                     //textViewResult.setText("Code: " + response.code());
                     return;
                 }
 
-                List<Post> posts = response.body();
+                List<Poll> polls = response.body();
 
-                for(Post post : posts) {
+                for(Poll poll : polls) {
+
                     String content = "";
-                    content += "ID: " + post.getId() + "\n";
-                    content += "User ID: " + post.getUserId() + "\n";
-                    content += "Title: " + post.getTitle() + "\n";
-                    content += "Text: " + post.getText() + "\n\n";
+                    content += "poll_id: " + poll.getPoll_id() + "\n";
+                    content += "creator_id: " + poll.getCreator_id() + "\n";
+                    content += "question: " + poll.getQuestion() + "\n";
+                    content += "require_name?: " + poll.isRequire_name() + "\n";
+                    content += "password: " + poll.getPassword() + "\n";
+                    content += "candidates: " + poll.getCandidates() + "\n";
+                    content += "ballots: " + poll.getBallots() + "\n\n";
 
                     //textViewResult.append(content);
                     System.out.println(content);
@@ -77,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
+            public void onFailure(Call<List<Poll>> call, Throwable t) {
                 //textViewResult.setText(t.getMessage());
                 System.out.println(t.getMessage());
             }
@@ -92,21 +96,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        FloatingActionButton btnNewPoll = findViewById(R.id.fab);
-        //Button btnNewPoll = findViewById(R.id.fab);
-        btnNewPoll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Initialize temp variables
-                //get the time
-                //set platform to "android"
-                //turn into JSON
-                //
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
