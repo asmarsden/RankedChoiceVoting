@@ -1,0 +1,92 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="pollQuestion">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="pollQuestion"
+          required
+          [(ngModel)]="poll.pollQuestion"
+          name="pollQuestion"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="askedBy">Creator Name</label>
+        <input
+          class="form-control"
+          id="askedBy"
+          required
+          [(ngModel)]="poll.askedBy"
+          name="askedBy"
+        />
+      </div>
+      
+      <!-- <div class="form-group">
+        <label for="option1">Option 1</label>
+        <input
+          type="text"
+          class="form-control"
+          id="option1"
+          required
+          [(ngModel)]="poll.option1"
+          name="option1"
+        />
+      </div>
+            <div class="form-group">
+        <label for="option2">Option 2</label>
+        <input
+          type="text"
+          class="form-control"
+          id="option2"
+          required
+          [(ngModel)]="poll.option2"
+          name="option2"
+        />
+      </div>
+            <div class="form-group">
+        <label for="option3">Option 3</label>
+        <input
+          type="text"
+          class="form-control"
+          id="option3"
+          required
+          [(ngModel)]="poll.option3"
+          name="option3"
+        />
+      </div>
+            <div class="form-group">
+        <label for="option4">Option 4</label>
+        <input
+          type="text"
+          class="form-control"
+          id="option4"
+          required
+          [(ngModel)]="poll.option4"
+          name="option4"
+        />
+      </div>
+      
+            <div class="form-group">
+        <label for="option5">Option 5</label>
+        <input
+          type="text"
+          class="form-control"
+          id="option5"
+          required
+          [(ngModel)]="poll.option5"
+          name="option5"
+        />
+      </div> -->
+
+      <button (click)="savePoll()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Poll was created successfully!</h4>
+      <button class="btn btn-success" (click)="newPoll()">Add</button>
+    </div>
+  </div>
+</div>

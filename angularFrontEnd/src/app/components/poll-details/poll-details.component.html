@@ -1,0 +1,65 @@
+<div>
+  <div *ngIf="currentPoll.id" class="edit-form">
+    <h4>Poll</h4>
+    <form>
+      <div class="form-group">
+        <label for="pollQuestion">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="pollQuestion"
+          [(ngModel)]="currentPoll.pollQuestion"
+          name="pollQuestion"
+        />
+      </div>
+      <div class="form-group">
+        <label for="askedBy">Asked by</label>
+        <input
+          type="text"
+          class="form-control"
+          id="askedBy"
+          [(ngModel)]="currentPoll.askedBy"
+          name="askedBy"
+        />
+      </div>
+
+      <div class="form-group">
+        <label><strong>Status:</strong></label>
+        {{ currentPoll.published ? "Published" : "Pending" }}
+      </div>
+    </form>
+
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentPoll.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button>
+    <button
+      *ngIf="!currentPoll.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button>
+
+    <button class="badge badge-danger mr-2" (click)="deletePoll()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updatePoll()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentPoll.id">
+    <br />
+    <p>Cannot access this poll...</p>
+  </div>
+</div>
