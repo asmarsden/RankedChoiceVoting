@@ -1,5 +1,5 @@
 <div>
-  <div *ngIf="currentPoll.id" class="edit-form">
+  <div *ngIf="currentPoll.pollCode" class="edit-form">
     <h4>Poll</h4>
     <form>
       <div class="form-group">
@@ -58,7 +58,7 @@
     <p>{{ message }}</p>
   </div>
 
-  <div *ngIf="!currentPoll.id">
+  <div *ngIf="!currentPoll.pollCode">
     <br />
     <p>Cannot access this poll...</p>
   </div>

@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Poll } from 'src/app/models/poll.model';
 import { PollService } from 'src/app/services/poll.service';
+import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-add-poll',
   templateUrl: './add-poll.component.html',
   styleUrls: ['./add-poll.component.css']
 })
+
 export class AddPollComponent implements OnInit {
   poll: Poll = {
     pollQuestion: '',
@@ -55,4 +57,43 @@ export class AddPollComponent implements OnInit {
     };
   }
 
+}
+
+export class AddPollComponent  {
+
+  pollForm: FormGroup;
+  
+  constructor(private fb:FormBuilder) {
+    this.pollForm = this.fb.group({
+      pollQuestion: '',
+      askedBy: '',
+      pollCode: '',
+      createdAt: '',
+      require_name: false,
+      published: false,
+      pollOptions: this.fb.array([])
+    });
+  }
+
+  pollOptions() : FormArray {
+    return this.pollForm.get("pollOptions") as FormArray
+  }
+
+  newQuantity(): FormGroup {
+    return this.fb.group({
+      option: ''
+    })
+  }
+
+  addQuantity() {
+    this.pollOptions().push(this.newQuantity());
+  }
+
+  removeQuantity(i:number) {
+    this.pollOptions().removeAt(i);
+  }
+
+  onSubmit() {
+    console.log(this.pollForm.value);
+  }
 }

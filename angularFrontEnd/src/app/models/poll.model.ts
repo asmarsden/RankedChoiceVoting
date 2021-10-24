@@ -1,4 +1,4 @@
-import { ExecSyncOptionsWithStringEncoding } from "child_process";
+//import { ExecSyncOptionsWithStringEncoding } from "child_process";
 
 export class Poll {
   pollCode?: any;

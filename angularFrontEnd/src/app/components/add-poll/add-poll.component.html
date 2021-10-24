@@ -23,6 +23,55 @@
           name="askedBy"
         />
       </div>
+
+      <div class="container">
+
+        <h1>Vote Options</h1>
+      
+        <form [formGroup]="pollOptions" (ngSubmit)="onSubmit()">
+      
+          <p>
+      
+            <label for="pollQuestion">Poll Question:</label>
+      
+            <input type="text" id="pollQuestion" pollQuestion="pollQuestion" formControlpollQuestion="pollQuestion" class="form-control">
+      
+          </p>
+      
+          <table class="table table-bordered" formArrayName="pollOptions">
+      
+            <tr>
+      
+              <th colspan="2">Add Vote Options:</th>
+      
+              <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>
+      
+            </tr>
+      
+            <tr *ngFor="let quantity of pollOptions().controls; let i=index" [formGroupName]="i">
+      
+              <td>
+      
+                  Quantity :
+      
+                  <input type="text" formControlName="option" class="form-control">
+      
+              </td>
+      
+              <td>
+      
+                  <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
+      
+              </td>
+      
+            </tr>
+      
+          </table>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        <br/>
+        {{this.pollForm.value | json}}
+      </div>
       
       <!-- <div class="form-group">
         <label for="option1">Option 1</label>

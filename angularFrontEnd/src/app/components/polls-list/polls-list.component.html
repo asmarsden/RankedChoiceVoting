@@ -8,13 +8,13 @@
         [(ngModel)]="pollQuestion"
       />
       <div class="input-group-append">
-        <button
+        <!-- <button
           class="btn btn-outline-secondary"
           type="button"
           (click)="searchPollQuestion()"
         >
           Search Polls
-        </button>
+        </button> -->
       </div>
     </div>
   </div>
@@ -31,9 +31,9 @@
       </li>
     </ul>
 
-    <button class="m-3 btn btn-sm btn-danger" (click)="sendVote()">
+    <!-- <button class="m-3 btn btn-sm btn-danger" (click)="sendVote()">
       Vote!
-    </button>
+    </button> -->
   </div>
   <div class="col-md-6">
     <div *ngIf="currentPoll">
@@ -43,14 +43,14 @@
       </div>
       <div>
         <label><strong>Description:</strong></label>
-        {{ currentPoll.description }}
+        {{ currentPoll.askedBy }}
       </div>
       <div>
         <label><strong>Status:</strong></label>
         {{ currentPoll.published ? "Published" : "Pending" }}
       </div>
 
-      <a class="badge badge-warning" routerLink="/polls/{{ currentPoll.id }}">
+      <a class="badge badge-warning" routerLink="/polls/{{ currentPoll.pollCode }}">
         Edit
       </a>
     </div>

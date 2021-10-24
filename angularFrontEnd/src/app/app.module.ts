@@ -1,14 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddInputComponent } from './add-input/add-input.component';
+import { AddInputComponent } from './components/add-input/add-input.component';
 import { AddPollComponent } from './components/add-poll/add-poll.component';
 import { PollDetailsComponent } from './components/poll-details/poll-details.component';
 import { PollsListComponent } from './components/polls-list/polls-list.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PollsListComponent } from './components/polls-list/polls-list.component
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
