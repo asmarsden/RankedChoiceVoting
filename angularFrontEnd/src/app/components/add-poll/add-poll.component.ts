@@ -16,7 +16,8 @@ export class AddPollComponent implements OnInit {
     pollCode: '',
     createdAt: '',
     require_name: false,
-    published: false
+    published: false,
+    optionList: []
   };
   submitted = false;
 
@@ -31,7 +32,8 @@ export class AddPollComponent implements OnInit {
       askedBy: this.poll.askedBy,
       pollCode: this.poll.pollCode,
       createdAt: this.poll.createdAt,
-      require_name: this.poll.require_name
+      require_name: this.poll.require_name,
+      optionList: this.poll.optionList
     };
 
     this.pollService.create(data)
@@ -53,47 +55,49 @@ export class AddPollComponent implements OnInit {
       pollCode: '',
       createdAt: '',
       require_name: false,
-      published: false
+      published: false,
+      optionList: []
     };
   }
 
 }
+//https://material.angular.io/guide/creating-a-custom-form-field-control has more info on this 
 
-export class AddPollComponent  {
+// export class AddPollComponent  {
 
-  pollForm: FormGroup;
+//   pollForm: FormGroup;
   
-  constructor(private fb:FormBuilder) {
-    this.pollForm = this.fb.group({
-      pollQuestion: '',
-      askedBy: '',
-      pollCode: '',
-      createdAt: '',
-      require_name: false,
-      published: false,
-      pollOptions: this.fb.array([])
-    });
-  }
+//   constructor(private fb:FormBuilder) {
+//     this.pollForm = this.fb.group({
+//       pollQuestion: '',
+//       askedBy: '',
+//       pollCode: '',
+//       createdAt: '',
+//       require_name: false,
+//       published: false,
+//       optionList: this.fb.array([])
+//     });
+//   }
 
-  pollOptions() : FormArray {
-    return this.pollForm.get("pollOptions") as FormArray
-  }
+//   optionList() : FormArray {
+//     return this.pollForm.get("optionList") as FormArray
+//   }
 
-  newQuantity(): FormGroup {
-    return this.fb.group({
-      option: ''
-    })
-  }
+//   newQuantity(): FormGroup {
+//     return this.fb.group({
+//       option: ''
+//     })
+//   }
 
-  addQuantity() {
-    this.pollOptions().push(this.newQuantity());
-  }
+//   addQuantity() {
+//     this.optionList().push(this.newQuantity());
+//   }
 
-  removeQuantity(i:number) {
-    this.pollOptions().removeAt(i);
-  }
+//   removeQuantity(i:number) {
+//     this.optionList().removeAt(i);
+//   }
 
-  onSubmit() {
-    console.log(this.pollForm.value);
-  }
-}
+//   onSubmit() {
+//     console.log(this.pollForm.value);
+//   }
+// }

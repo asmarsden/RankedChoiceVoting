@@ -24,111 +24,26 @@
         />
       </div>
 
-      <div class="container">
+      <div class="form-group">
+        <label for="optionList">Option 1 because forms are dumb so only one option until I get this working</label>
+        <input
+          type="text"
+          class="form-control"
+          id="optionList"
+          required
+          [(ngModel)]="poll.optionList"
+          name="optionList"
+        />
+      </div>
 
-        <h1>Vote Options</h1>
+      <mat-form-field appearance="fill">
+        <mat-label>Anonymous Voting</mat-label>
+        <mat-select>
+          <mat-option value="one">Allow Anonymous Voting</mat-option>
+          <mat-option value="two">Do Not Allow Anonymous Voting</mat-option>
+        </mat-select>
+      </mat-form-field>
       
-        <form [formGroup]="pollOptions" (ngSubmit)="onSubmit()">
-      
-          <p>
-      
-            <label for="pollQuestion">Poll Question:</label>
-      
-            <input type="text" id="pollQuestion" pollQuestion="pollQuestion" formControlpollQuestion="pollQuestion" class="form-control">
-      
-          </p>
-      
-          <table class="table table-bordered" formArrayName="pollOptions">
-      
-            <tr>
-      
-              <th colspan="2">Add Vote Options:</th>
-      
-              <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>
-      
-            </tr>
-      
-            <tr *ngFor="let quantity of pollOptions().controls; let i=index" [formGroupName]="i">
-      
-              <td>
-      
-                  Quantity :
-      
-                  <input type="text" formControlName="option" class="form-control">
-      
-              </td>
-      
-              <td>
-      
-                  <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
-      
-              </td>
-      
-            </tr>
-      
-          </table>
-          <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-        <br/>
-        {{this.pollForm.value | json}}
-      </div>
-      
-      <!-- <div class="form-group">
-        <label for="option1">Option 1</label>
-        <input
-          type="text"
-          class="form-control"
-          id="option1"
-          required
-          [(ngModel)]="poll.option1"
-          name="option1"
-        />
-      </div>
-            <div class="form-group">
-        <label for="option2">Option 2</label>
-        <input
-          type="text"
-          class="form-control"
-          id="option2"
-          required
-          [(ngModel)]="poll.option2"
-          name="option2"
-        />
-      </div>
-            <div class="form-group">
-        <label for="option3">Option 3</label>
-        <input
-          type="text"
-          class="form-control"
-          id="option3"
-          required
-          [(ngModel)]="poll.option3"
-          name="option3"
-        />
-      </div>
-            <div class="form-group">
-        <label for="option4">Option 4</label>
-        <input
-          type="text"
-          class="form-control"
-          id="option4"
-          required
-          [(ngModel)]="poll.option4"
-          name="option4"
-        />
-      </div>
-      
-            <div class="form-group">
-        <label for="option5">Option 5</label>
-        <input
-          type="text"
-          class="form-control"
-          id="option5"
-          required
-          [(ngModel)]="poll.option5"
-          name="option5"
-        />
-      </div> -->
 
       <button (click)="savePoll()" class="btn btn-success">Submit</button>
     </div>
