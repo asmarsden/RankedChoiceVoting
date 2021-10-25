@@ -7,9 +7,10 @@ public class Poll {
     private String poll_id;
     private String creator_id;
     private String question;
+    private String end_time; //java.time.LocalDateTime
     private boolean require_name;
     private String password;
-    private List<String> candidates;
+    private String[] candidates;
     private List<Ballot> ballots;
 
     public String getPoll_id() {
@@ -33,6 +34,13 @@ public class Poll {
         this.question = question;
     }
 
+    public String getEnd_time() {
+        return end_time;
+    }
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
+    }
+
     public boolean isRequire_name() {
         return require_name;
     }
@@ -47,10 +55,10 @@ public class Poll {
         this.password = password;
     }
 
-    public List<String> getCandidates() {
+    public String[] getCandidates() {
         return candidates;
     }
-    public void setCandidates(List<String> candidates) {
+    public void setCandidates(String[] candidates) {
         this.candidates = candidates;
     }
 

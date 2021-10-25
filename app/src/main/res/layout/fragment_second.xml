@@ -18,74 +18,75 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText_candidate1"
+        android:id="@+id/editTextCandidate1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Candidate 1"
+        android:layout_marginTop="15dp"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPollQuestion" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextEndTime" />
 
     <EditText
-        android:id="@+id/editText_candidate2"
+        android:id="@+id/editTextCandidate2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Candidate 2"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_candidate1" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCandidate1" />
 
     <Button
-        android:id="@+id/btn_addCandidate"
+        android:id="@+id/btnAddCandidate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:text="Add Candidate"
-        app:layout_constraintStart_toStartOf="@+id/editText_candidate2"
-        app:layout_constraintTop_toBottomOf="@+id/editText_candidate2" />
+        app:layout_constraintStart_toStartOf="@+id/editTextCandidate2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCandidate2" />
 
     <ImageButton
-        android:id="@+id/btn_deleteCandidate2"
+        android:id="@+id/btnDeleteCandidate2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
         android:src="@android:drawable/ic_delete"
-        app:layout_constraintBottom_toBottomOf="@+id/editText_candidate2"
-        app:layout_constraintStart_toEndOf="@+id/editText_candidate2"
-        app:layout_constraintTop_toBottomOf="@+id/editText_candidate1" />
+        app:layout_constraintBottom_toBottomOf="@+id/editTextCandidate2"
+        app:layout_constraintStart_toEndOf="@+id/editTextCandidate2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCandidate1" />
 
     <CheckBox
-        android:id="@+id/checkBox_nameOption"
+        android:id="@+id/checkBoxNameOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="Ask for name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_addCandidate" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAddCandidate" />
 
     <CheckBox
-        android:id="@+id/checkBox_passwordOption"
+        android:id="@+id/checkBoxPasswordOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Require Password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_nameOption" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxNameOption" />
 
     <EditText
-        android:id="@+id/editText_password"
+        android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_passwordOption" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxPasswordOption" />
 
     <Button
-        android:id="@+id/btn_submit"
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
@@ -93,5 +94,86 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="End Date (MM-DD-YY)"
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPollQuestion" />
+
+    <EditText
+        android:id="@+id/editTextEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="End Time (HH:MM)"
+        android:inputType="time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEndDate" />
+
+    <TextView
+        android:id="@+id/txtPollQuestionWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:text="Poll Question Required"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPollQuestion"
+        app:layout_constraintStart_toEndOf="@+id/editTextPollQuestion"
+        app:layout_constraintTop_toTopOf="@+id/editTextPollQuestion" />
+
+    <TextView
+        android:id="@+id/txtEndDateWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:text="End Date Required"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextEndDate"
+        app:layout_constraintStart_toEndOf="@+id/editTextEndDate"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPollQuestion" />
+
+    <TextView
+        android:id="@+id/txtEndTimeWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:text="End Time Required"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextEndTime"
+        app:layout_constraintStart_toEndOf="@+id/editTextEndTime"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEndDate" />
+
+    <TextView
+        android:id="@+id/txtCandidate1Warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:text="Candidate Name Required"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextCandidate1"
+        app:layout_constraintStart_toEndOf="@+id/editTextCandidate1"
+        app:layout_constraintTop_toTopOf="@+id/editTextCandidate1" />
+
+    <TextView
+        android:id="@+id/txtCandidate2Warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:text="Candidate Name\nRequired"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextCandidate2"
+        app:layout_constraintStart_toEndOf="@+id/btnDeleteCandidate2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCandidate1" />
+
+    <TextView
+        android:id="@+id/txtPasswordWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:text="Password cannot be empty"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintStart_toEndOf="@+id/editTextPassword"
+        app:layout_constraintTop_toTopOf="@+id/editTextPassword" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
