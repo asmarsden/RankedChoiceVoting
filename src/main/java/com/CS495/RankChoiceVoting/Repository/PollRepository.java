@@ -14,6 +14,10 @@ public interface PollRepository extends MongoRepository<Poll, String> {
   public List<Poll> findBypollQuestion(String pollQuestion);
   public Poll findByPollID(String PollID);
   public Poll findByVoteList(Vote vote);
+  public Poll findByPollCode(String pollCode);
+  public boolean existsByPollCode(String pollCode);
+  public void deleteByPollCode(String pollCode);
+ 
   
 
 }

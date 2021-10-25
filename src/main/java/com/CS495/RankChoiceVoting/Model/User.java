@@ -10,15 +10,38 @@ public class User{
 	public String userID;
 	
 	public String userName;
+	private String password;
 	
-	@Override
+
 	public String getUsername()
 	{
-		return username;
+		return userName;
 	}
-	@Override
+
 	public String getUserID()
 	{
 		return userID;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	
+	
 }

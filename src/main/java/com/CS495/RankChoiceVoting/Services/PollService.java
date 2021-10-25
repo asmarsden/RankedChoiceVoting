@@ -9,6 +9,8 @@ public interface PollService {
 	PollDTO createPoll (PollDTO poll);
 	
 	PollDTO updatePoll (PollDTO pollDTO);
+
+	void deletePoll(PollDTO pollDTO);
 	
 	//findby user
 	//find all polls -> List<PollDTO>

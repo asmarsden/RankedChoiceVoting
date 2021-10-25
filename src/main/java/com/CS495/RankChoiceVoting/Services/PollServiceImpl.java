@@ -63,7 +63,25 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public PollDTO updatePoll(PollDTO pollDTO) {
 		// TODO Auto-generated method stub
+		if (pollRepository.existsByPollCode(pollDTO.getPollCode()))
+		{
+			Poll pollToUpdate = pollRepository.findByPollCode(pollDTO.getPollCode());
+			pollToUpdate.setRequire_name(pollDTO.isRequire_name());
+			//other members that we would like to be able to change as we add for RCV
+			
+			return pollMapper.polltoDTO(pollRepository.save(pollToUpdate));
+		}
 		return null;
+	}
+	
+	@Override
+	public void deletePoll(PollDTO pollDTO)
+	{
+		if (pollRepository.existsByPollCode(pollDTO.getPollCode()))
+		{
+			Poll pollToDelete = pollRepository.findByPollCode(pollDTO.getPollCode());
+			pollRepository.deleteByPollCode(pollToDelete.getPollCode());
+		}
 	}
 	
 	
