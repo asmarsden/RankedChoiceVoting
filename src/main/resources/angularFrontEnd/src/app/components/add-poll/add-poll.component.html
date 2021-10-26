@@ -1,47 +1,58 @@
-<div>
-  <div class="submit-form">
-    <div *ngIf="!submitted">
-      <div class="form-group">
-        <label for="pollQuestion">Title</label>
-        <input
-          type="text"
-          class="form-control"
-          id="pollQuestion"
-          required
-          [(ngModel)]="poll.pollQuestion"
-          name="pollQuestion"
-        />
-      </div>
+<div class="main-content">
+    <div class="container-fluid">
+        <form (ngSubmit)="save()" #pollForm="ngForm">
+            <div class="row form-check form-check-radio">
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label>Enter Your Poll Question Here!</label>
+                        <input type="text" required minlength="1" maxlength="250" class="form-control" placeholder=""
+                            [(ngModel)]="poll.pollQuestion" #namePoll="ngModel" name="pollQuestion">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row form-check form-check-radio">
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label>Enter Your Name Here!</label>
+                        <input type="text" required minlength="1" maxlength="250" class="form-control" placeholder=""
+                            [(ngModel)]="poll.askedBy" #namePoll="ngModel" name="askedBy">
+                    </div>
+                </div>
+            </div>
 
-      <div class="form-group">
-        <label for="askedBy">Creator Name</label>
-        <input
-          class="form-control"
-          id="askedBy"
-          required
-          [(ngModel)]="poll.askedBy"
-          name="askedBy"
-        />
-      </div>
+            <hr>
 
-      <div class="form-group">
-        <label for="optionList">Option 1 because forms are dumb so only one option until I get this working</label>
-        <input
-          type="text"
-          class="form-control"
-          id="optionList"
-          required
-          [(ngModel)]="poll.optionList"
-          name="optionList"
-        />
-      </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="poll.require_name"
+                        name="require_name">
+                    <span class="form-check-sign"></span>
+                    Require a name with each vote?
+                </div>
+            </div>
 
-      <button (click)="savePoll()" class="btn btn-success">Submit</button>
+            <hr>
+
+            <a class="btn btn-info" style="margin-bottom:1%" (click)="add()">Add new vote option</a>
+            <div *ngFor="let vote of poll.optionList; let i=index">
+                <div class="form-group">
+                    <label>Option #{{i + 1}}
+                        <i class="pe-7s-close-circle icon" (click)="removeAnswer(i)"></i></label>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="text" required minlength="2" maxlength="250" class="form-control"
+                                placeholder="" [(ngModel)]="poll.optionList[i]" #votePoll="ngModel"
+                                name="'{{ 'votePoll' + i }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            
+            
+            <button type="submit" [disabled]="!pollForm.form.valid" class="btn btn-success">Create Poll!</button>
+        </form>
     </div>
-
-    <div *ngIf="submitted">
-      <h4>Poll was created successfully!</h4>
-      <button class="btn btn-success" (click)="newPoll()">Add</button>
-    </div>
-  </div>
 </div>

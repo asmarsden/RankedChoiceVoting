@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Poll } from '../models/poll.model';
+import { Poll, Vote } from '../models/poll.model';
 
 const baseUrl = 'http://localhost:8080/api/polls';
 
@@ -36,7 +36,7 @@ export class PollService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(title: any): Observable<Poll[]> {
-    return this.http.get<Poll[]>(`${baseUrl}?title=${title}`);
+  findByName(askedBy: any): Observable<Poll[]> {
+    return this.http.get<Poll[]>(`${baseUrl}?askedBy=${askedBy}`);
   }
 }

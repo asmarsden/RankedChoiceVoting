@@ -14,10 +14,11 @@ import com.CS495.RankChoiceVoting.Repository.PollRepository;
 
 @SpringBootApplication
 @EnableMongoRepositories
+@ComponentScan
 public class RankChoiceVotingApplication implements CommandLineRunner {
 
-  @Autowired
-  private PollRepository repository;
+//  @Autowired
+//  private PollRepository repository;
 
   public static void main(String[] args) {
     SpringApplication.run(RankChoiceVotingApplication.class, args);

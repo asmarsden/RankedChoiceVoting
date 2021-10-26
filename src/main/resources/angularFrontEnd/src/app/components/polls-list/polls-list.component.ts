@@ -54,11 +54,11 @@ export class PollsListComponent implements OnInit {
         });
   }
 
-  searchTitle(): void {
+  searchPolls(): void {
     this.currentPoll = undefined;
     this.currentIndex = -1;
 
-    this.pollService.findByTitle(this.pollQuestion)
+    this.pollService.findByName(this.pollQuestion)
       .subscribe(
         data => {
           this.polls = data;

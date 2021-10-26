@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\KNT Customs\git\RankedChoiceVoting\angularFrontEnd\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\Users\KNT Customs\git\RankedChoiceVoting\src\main\resources\angularFrontEnd\src\polyfills.ts */"hN/g");
 
 
 /***/ }),

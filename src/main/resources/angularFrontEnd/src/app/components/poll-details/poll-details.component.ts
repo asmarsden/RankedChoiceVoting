@@ -12,6 +12,9 @@ export class PollDetailsComponent implements OnInit {
   currentPoll: Poll = {
     pollQuestion: '',
     askedBy: '',
+    multipleAnswer: false,
+    require_name: false,
+    optionList: [],
     published: false
   };
   message = '';
