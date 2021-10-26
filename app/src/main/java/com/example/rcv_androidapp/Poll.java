@@ -4,27 +4,36 @@ import java.util.List;
 
 public class Poll {
 
-    private String poll_id;
-    private String creator_id;
+    private String pollId;
+    private String creatorId;
+    private String urlCode;
     private String question;
-    private String end_time; //java.time.LocalDateTime
-    private boolean require_name;
+    private String endTime; //java.time.LocalDateTime
+    private boolean requireName;
+    private boolean requirePassword;
     private String password;
     private String[] candidates;
     private List<Ballot> ballots;
 
-    public String getPoll_id() {
-        return poll_id;
+    public String getPollId() {
+        return pollId;
     }
-    public void setPoll_id(String poll_id) {
-        this.poll_id = poll_id;
+    public void setPollId(String poll_id) {
+        this.pollId = poll_id;
     }
 
-    public String getCreator_id() {
-        return creator_id;
+    public String getCreatorId() {
+        return creatorId;
     }
-    public void setCreator_id(String creator_id) {
-        this.creator_id = creator_id;
+    public void setCreatorId(String creator_id) {
+        this.creatorId = creator_id;
+    }
+
+    public String getUrlCode() {
+        return urlCode;
+    }
+    public void setUrlCode(String url_code) {
+        this.urlCode = url_code;
     }
 
     public String getQuestion() {
@@ -34,18 +43,25 @@ public class Poll {
         this.question = question;
     }
 
-    public String getEnd_time() {
-        return end_time;
+    public String getEndTime() {
+        return endTime;
     }
-    public void setEnd_time(String end_time) {
-        this.end_time = end_time;
+    public void setEndTime(String end_time) {
+        this.endTime = end_time;
     }
 
-    public boolean isRequire_name() {
-        return require_name;
+    public boolean isRequireName() {
+        return requireName;
     }
-    public void setRequire_name(boolean require_name) {
-        this.require_name = require_name;
+    public void setRequireName(boolean require_name) {
+        this.requireName = require_name;
+    }
+
+    public boolean isRequirePassword() {
+        return requirePassword;
+    }
+    public void setRequirePassword(boolean requirePassword) {
+        this.requirePassword = requirePassword;
     }
 
     public String getPassword() {

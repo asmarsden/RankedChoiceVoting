@@ -17,9 +17,16 @@ import com.example.rcv_androidapp.databinding.FragmentSecondBinding;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
+    private VotingApi votingApi;
 
     @Override
     public View onCreateView(
@@ -64,23 +71,67 @@ public class SecondFragment extends Fragment {
     }
 
     private void createPoll() {
-        if (validateData()) {
-            Poll newPoll = new Poll();
-            newPoll.setQuestion(binding.editTextPollQuestion.getText().toString());
-            String endDate = binding.editTextEndDate.getText().toString();
-            String endTime = binding.editTextEndTime.getText().toString();
-            newPoll.setEnd_time(endDate + "T" + endTime + ":00");
-            String[] candidates = {binding.editTextCandidate1.getText().toString(), binding.editTextCandidate2.getText().toString()};
-            newPoll.setCandidates(candidates);
-            newPoll.setRequire_name(binding.checkBoxNameOption.isChecked());
-            if (binding.checkBoxPasswordOption.isChecked()) {
-                newPoll.setPassword(binding.editTextPassword.getText().toString());
-            } else {
-                newPoll.setPassword(null);
-            }
-            //POST
-
+        if (!validateData()) {
+            return;
         }
+        Poll newPoll = new Poll();
+        newPoll.setCreatorId("temporaryCreatorID"); //few ways we could deal with create_id generation (finish later regardless)
+        //no need to set url_code here. server will do that for us.
+        newPoll.setQuestion(binding.editTextPollQuestion.getText().toString());
+        String endDate = binding.editTextEndDate.getText().toString();
+        String endTime = binding.editTextEndTime.getText().toString();
+        newPoll.setEndTime(endDate + "T" + endTime + ":00");
+        String[] candidates = {binding.editTextCandidate1.getText().toString(), binding.editTextCandidate2.getText().toString()};
+        newPoll.setCandidates(candidates);
+        newPoll.setRequireName(binding.checkBoxNameOption.isChecked());
+        if (binding.checkBoxPasswordOption.isChecked()) {
+            newPoll.setPassword(binding.editTextPassword.getText().toString());
+        } else {
+            newPoll.setPassword(null);
+        }
+        //POST
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        VotingApi votingApi = retrofit.create(VotingApi.class);
+        Call<Poll> call = votingApi.createPoll(newPoll);
+
+        call.clone().enqueue(new Callback<Poll>() {
+            @Override
+            public void onResponse(Call<Poll> call, Response<Poll> response) {
+
+                if (!response.isSuccessful()) {
+                    System.out.println("Code: " + response.code());
+                    return;
+                }
+
+                Poll pollResponse = response.body();
+
+                String content = "";
+                content += "creatorId: " + pollResponse.getCreatorId() + "\n";
+                content += "urlCode: " + pollResponse.getUrlCode() + "\n";
+                content += "question: " + pollResponse.getQuestion() + "\n";
+                content += "endTime: " + pollResponse.getEndTime() + "\n";
+                content += "requireName?: " + pollResponse.isRequireName() + "\n";
+                content += "requirePassword?: " + pollResponse.isRequirePassword() + "\n";
+                content += "password: " + pollResponse.getPassword() + "\n";
+                content += "candidates: " + "\n";
+                for (String candidate : pollResponse.getCandidates()) {
+                    content += candidate + "\n";
+                }
+                content += "\n";
+                System.out.println(content);
+
+            }
+
+            @Override
+            public void onFailure(Call<Poll> call, Throwable t) {
+                System.out.println(t.getMessage());
+                System.out.println("Are you running the Spring app?");
+            }
+        });
     }
 
     private boolean validateData() {

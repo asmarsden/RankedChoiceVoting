@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private TextView textViewResult;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,59 +52,48 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         //------------
-        //setContentView(R.layout.fragment_first);
-
-        //textViewResult = findViewById(R.id.textview_first);
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://localhost:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        VotingApi votingApi = retrofit.create(VotingApi.class);
-
-        Call<List<Poll>> call = votingApi.getPolls();
-
-        call.enqueue(new Callback<List<Poll>>() {
-
-            @Override
-            public void onResponse(Call<List<Poll>> call, Response<List<Poll>> response) {
-
-                if(!response.isSuccessful()) {
-                    //textViewResult.setText("Code: " + response.code());
-                    return;
-                }
-
-                List<Poll> polls = response.body();
-
-                for(Poll poll : polls) {
-
-                    String content = "";
-                    content += "poll_id: " + poll.getPoll_id() + "\n";
-                    content += "creator_id: " + poll.getCreator_id() + "\n";
-                    content += "question: " + poll.getQuestion() + "\n";
-                    content += "require_name?: " + poll.isRequire_name() + "\n";
-                    content += "password: " + poll.getPassword() + "\n";
-                    content += "candidates: " + poll.getCandidates() + "\n";
-                    content += "ballots: " + poll.getBallots() + "\n\n";
-
-                    //textViewResult.append(content);
-                    System.out.println(content);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Poll>> call, Throwable t) {
-                //textViewResult.setText(t.getMessage());
-                System.out.println(t.getMessage());
-            }
-        });
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("http://192.168.1.100:8080/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//
+//        VotingApi votingApi = retrofit.create(VotingApi.class);
+//
+//        Call<List<Poll>> call = votingApi.getPolls();
+//
+//        call.clone().enqueue(new Callback<List<Poll>>() {
+//
+//            @Override
+//            public void onResponse(Call<List<Poll>> call, Response<List<Poll>> response) {
+//
+//                if(!response.isSuccessful()) {
+//                    System.out.println("Code: " + response.code());
+//                    return;
+//                }
+//
+//                List<Poll> polls = response.body();
+//
+//                for(Poll poll : polls) {
+//
+//                    String content = "";
+//                    content += "poll_id: " + poll.getPoll_id() + "\n";
+//                    content += "creator_id: " + poll.getCreator_id() + "\n";
+//                    content += "question: " + poll.getQuestion() + "\n";
+//                    content += "require_name?: " + poll.isRequire_name() + "\n";
+//                    content += "password: " + poll.getPassword() + "\n";
+//                    content += "candidates: " + poll.getCandidates() + "\n";
+//                    content += "ballots: " + poll.getBallots() + "\n\n";
+//
+//                    System.out.println(content);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Poll>> call, Throwable t) {
+//                System.out.println(t.getMessage());
+//            }
+//        });
         //------------
-
-
-
-
-
     }
 
     @Override
