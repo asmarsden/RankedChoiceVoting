@@ -7,6 +7,7 @@ import com.CS495.RankChoiceVoting.Model.User;
 
 public interface UserService 
 {
-	User create ( UserDTO userDTO );
+	//Changed from User create ( UserDTO userDTO);
+	boolean create(UserDTO userDTO);
 	
 }

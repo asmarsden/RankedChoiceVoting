@@ -15,6 +15,9 @@ public class UserDTO {
 	private String userName;
 	private String password;
 	
+	//Added
+	public UserDTO() {}
+	
 	public String getUserName() {
 		return userName;
 	}
