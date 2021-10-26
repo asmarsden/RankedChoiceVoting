@@ -8,80 +8,109 @@ import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
 
+@Component
 @Document("Polls")
 public class Poll {
 
   @Id
-  public String pollID; //for mongo purposes
-
-  public String pollQuestion; //Title of poll to be voted on
-  public String askedBy; //creatorID / userID
-  public boolean require_name;
-  public String createdAt;
-  public List<Vote> voteList;
+  private String pollId; //for mongo purposes
+  private String creatorId;
+  private String urlCode;
+  private String question; //Title of poll to be voted on
+  private String endTime;
+  //public String askedBy; //creatorID / userID
+  private boolean requireName;
+  private boolean requirePassword;
+  private String password; //null if no password is required
+  private String[] candidates;
+  private List<Ballot> ballots;
+  //public String createdAt;
+  //public List<Vote> voteList;
   
-  public String pollCode; //for our identifying purposes
+  //public String pollCode; //for our identifying purposes
 
   public Poll() {}
 
-  public Poll(String pollQuestion, String askedBy, List<Vote> votes) {
-    this.pollQuestion = pollQuestion;
-    this.askedBy = askedBy;
-    this.voteList = votes;
-    //this.createdAt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-  }
+//  public Poll(String pollQuestion, String askedBy, List<Vote> votes) {
+//    this.pollQuestion = pollQuestion;
+//    this.askedBy = askedBy;
+//    this.voteList = votes;
+//    //this.createdAt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+//  }
+//  
   
-  
 
-  public String getPollQuestion() {
-	return pollQuestion;
+	public String getPollId() {
+	    return pollId;
+	}
+	public void setPollId(String pollId) {
+	    this.pollId = pollId;
+	}
+	
+	public String getCreatorId() {
+	    return creatorId;
+	}
+	public void setCreatorId(String creatorId) {
+	    this.creatorId = creatorId;
+	}
+	
+	public String getUrlCode() {
+	    return urlCode;
+	}
+	public void setUrlCode(String urlCode) {
+	    this.urlCode = urlCode;
+	}
+	
+	public String getQuestion() {
+	    return question;
+	}
+	public void setQuestion(String question) {
+	    this.question = question;
+	}
+	
+	public String getEndTime() {
+	    return endTime;
+	}
+	public void setEndTime(String endTime) {
+	    this.endTime = endTime;
+	}
+	
+	public boolean isRequireName() {
+	    return requireName;
+	}
+	public void setRequireName(boolean requireName) {
+	    this.requireName = requireName;
+	}
+	
+	public boolean isRequirePassword() {
+	    return requirePassword;
+	}
+	public void setRequirePassword(boolean requirePassword) {
+	    this.requirePassword = requirePassword;
+	}
+	
+	public String getPassword() {
+	    return password;
+	}
+	public void setPassword(String password) {
+	    this.password = password;
+	}
+	
+	public String[] getCandidates() {
+	    return candidates;
+	}
+	public void setCandidates(String[] candidates) {
+	    this.candidates = candidates;
+	}
+	
+	public List<Ballot> getBallots() {
+	    return ballots;
+	}
+	public void setBallots(List<Ballot> ballots) {
+    this.ballots = ballots;
 }
-
-public void setPollQuestion(String pollQuestion) {
-	this.pollQuestion = pollQuestion;
-}
-
-public String getAskedBy() {
-	return askedBy;
-}
-
-public void setAskedBy(String askedBy) {
-	this.askedBy = askedBy;
-}
-
-public boolean isRequire_name() {
-	return require_name;
-}
-
-public void setRequire_name(boolean require_name) {
-	this.require_name = require_name;
-}
-
-public String getCreatedAt() {
-	return createdAt;
-}
-
-public void setCreatedAt(String createdAt) {
-	this.createdAt = createdAt;
-}
-
-public List<Vote> getVoteList() {
-	return voteList;
-}
-
-public void setVoteList(List<Vote> voteList) {
-	this.voteList = voteList;
-}
-
-public String getPollCode() {
-	return pollCode;
-}
-
-public void setPollCode(String pollCode) {
-	this.pollCode = pollCode;
-}
-
 
 
 @Override
@@ -92,15 +121,15 @@ public boolean equals(Object obj) {
 		return false;
 	if (getClass() != obj.getClass())
 		return false;
-	Poll other = (Poll) obj;
-	return require_name == other.require_name;
+	Poll other = (Poll) obj; //confused about these two lines
+	return requireName == other.requireName;
 }
 
 @Override
-  public String toString() {
+  public String toString() { //missing candidates and ballots for now
     return String.format(
-    "Poll[PollID=%s, pollQuestion='%s', askedBy='%s', createdAt='%s']",
-        pollID, pollQuestion, askedBy, createdAt);
+    "Poll[poll_id=%s, creator_id='%s', url_code='%s', question='%s', end_time='%s', require_name='%s', require_password='%s', password='%s']",
+    pollId, creatorId, urlCode, question, endTime, requireName, requirePassword, password);
   }
 
 }

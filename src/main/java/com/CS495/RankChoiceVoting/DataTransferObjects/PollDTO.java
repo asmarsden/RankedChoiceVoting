@@ -9,59 +9,91 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
-import com.CS495.RankChoiceVoting.Model.Vote;
+import com.CS495.RankChoiceVoting.Model.Ballot;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class PollDTO
 {
-        private List<Vote> voteList;
-        private String pollQuestion;
-        
-        private boolean require_name;
-        
-        //private SimpleDateFormat createdAt;
+	private String pollId;
+    private String creatorId;
+    private String urlCode;
+    private String question;
+    private String endTime; //java.time.LocalDateTime
+    private boolean requireName;
+    private boolean requirePassword;
+    private String password;
+    private String[] candidates;
+    private List<Ballot> ballots;
 
-        private String pollCode;
+    public String getPollId() {
+        return pollId;
+    }
+    public void setPollId(String pollId) {
+        this.pollId = pollId;
+    }
 
-		public List<Vote> getVoteList() {
-			return voteList;
-		}
+    public String getCreatorId() {
+        return creatorId;
+    }
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+    }
 
-		public void setVoteList(List<Vote> voteList) {
-			this.voteList = voteList;
-		}
+    public String getUrlCode() {
+        return urlCode;
+    }
+    public void setUrlCode(String urlCode) {
+        this.urlCode = urlCode;
+    }
 
-		public String getPollQuestion() {
-			return pollQuestion;
-		}
+    public String getQuestion() {
+        return question;
+    }
+    public void setQuestion(String question) {
+        this.question = question;
+    }
 
-		public void setPollQuestion(String pollQuestion) {
-			this.pollQuestion = pollQuestion;
-		}
+    public String getEndTime() {
+        return endTime;
+    }
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
 
-		public boolean isRequire_name() {
-			return require_name;
-		}
+    public boolean isRequireName() {
+        return requireName;
+    }
+    public void setRequireName(boolean requireName) {
+        this.requireName = requireName;
+    }
 
-		public void setRequire_name(boolean require_name) {
-			this.require_name = require_name;
-		}
+    public boolean isRequirePassword() {
+        return requirePassword;
+    }
+    public void setRequirePassword(boolean requirePassword) {
+        this.requirePassword = requirePassword;
+    }
 
-		//public SimpleDateFormat getCreatedAt() {
-		//	return createdAt;
-		//}
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-		//public void setCreatedAt(SimpleDateFormat createdAt) {
-		//	this.createdAt = createdAt;
-		//}
+    public String[] getCandidates() {
+        return candidates;
+    }
+    public void setCandidates(String[] candidates) {
+        this.candidates = candidates;
+    }
 
-		public String getPollCode() {
-			return pollCode;
-		}
-
-		public void setPollCode(String pollCode) {
-			this.pollCode = pollCode;
-		}
+    public List<Ballot> getBallots() {
+        return ballots;
+    }
+    public void setBallots(List<Ballot> ballots) {
+        this.ballots = ballots;
+    }
 }

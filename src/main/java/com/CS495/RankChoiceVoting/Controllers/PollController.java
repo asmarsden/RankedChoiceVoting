@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.CS495.RankChoiceVoting.DataTransferObjects.PollDTO;
+import com.CS495.RankChoiceVoting.Repository.PollRepository;
 import com.CS495.RankChoiceVoting.Services.PollService;
 
 
@@ -18,13 +19,16 @@ import com.CS495.RankChoiceVoting.Services.PollService;
 public class PollController {
 	
 	@Autowired
-	public PollService pollService;
+	private PollService pollService;
+	
+	@Autowired
+	private PollRepository pollRepository;
 	
 	
 	 @GetMapping ("/{code}")
-     public PollDTO getPollByCode ( @PathVariable String code )
+     public PollDTO getPollByCode ( @PathVariable("code") String code )
      {
-             return pollService.findPollByCode( code );
+             return pollService.findPollByUrlCode( code );
      }
 	 
 	@PostMapping
@@ -32,10 +36,6 @@ public class PollController {
 	{
 		return pollService.createPoll(poll);
 	}
-	
-	
-	
-	
 	
 	
 }

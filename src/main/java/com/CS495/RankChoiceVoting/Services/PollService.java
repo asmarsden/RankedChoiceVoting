@@ -4,18 +4,17 @@ import com.CS495.RankChoiceVoting.DataTransferObjects.PollDTO;
 
 public interface PollService {
 	//crud operations for polls
-	PollDTO findPollByCode (String pollCode);
+	public PollDTO findPollByUrlCode (String urlCode);
 	
-	PollDTO createPoll (PollDTO poll);
+	public PollDTO createPoll (PollDTO poll);
 	
-	PollDTO updatePoll (PollDTO pollDTO);
+	public PollDTO updatePoll (PollDTO pollDTO); //why is one named pollDTO and not the other?
 
-	void deletePoll(PollDTO pollDTO);
+	public void deletePoll (PollDTO pollDTO);
 	
 	//findby user
 	//find all polls -> List<PollDTO>
 	//updatePoll 
 	
-	
-	
+		
 }

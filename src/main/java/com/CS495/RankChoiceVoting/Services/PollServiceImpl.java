@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.CS495.RankChoiceVoting.DataTransferObjects.PollDTO;
 import com.CS495.RankChoiceVoting.Model.Poll;
 import com.CS495.RankChoiceVoting.Repository.PollRepository;
-import com.CS495.RankChoiceVoting.Repository.VoteRepository;
+//import com.CS495.RankChoiceVoting.Repository.VoteRepository;
 import com.CS495.RankChoiceVoting.mappers.PollMapper;
 
 @Service
@@ -21,8 +21,8 @@ public class PollServiceImpl implements PollService {
 	private PollRepository pollRepository;
 	@Autowired
 	private PollMapper pollMapper;
-	@Autowired
-	private VoteRepository voteRepository;
+	//@Autowired
+	//private VoteRepository voteRepository;
 	
 	//@Autowired
     //public PollServiceImpl ( PollRepository pollRepository, PollMapper pollMapper, VoteRepository voteRepository )
@@ -33,7 +33,7 @@ public class PollServiceImpl implements PollService {
     //}
 	
 	@Override
-	public PollDTO findPollByCode(String pollCode) {
+	public PollDTO findPollByUrlCode(String pollCode) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -44,17 +44,17 @@ public class PollServiceImpl implements PollService {
 
 		Poll pollToSaveToDatabase = new Poll(); 
 		pollToSaveToDatabase = pollMapper.pollDTOtoPoll(poll);
-		System.out.println(poll.getVoteList());
-		System.out.println(pollToSaveToDatabase.getPollQuestion());
-		System.out.println("question above this and vote list below this");
-		System.out.println(pollToSaveToDatabase.getVoteList());
+		//System.out.println(poll.getVoteList());
+		System.out.println(pollToSaveToDatabase.getQuestion());
+		//System.out.println("question above this and vote list below this");
+		//System.out.println(pollToSaveToDatabase.getVoteList());
 		
 		//todo: if security checks out, then entry
-		pollToSaveToDatabase.setPollCode(generateRandomPollID()); //generate random code
-		pollToSaveToDatabase.setCreatedAt(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-		pollToSaveToDatabase.setAskedBy("currentUser"); //add .getUser.userDTOtoUser.getUsername()
-		pollToSaveToDatabase.setRequire_name(false); //pollToSaveToDatabase.equals(pollToSaveToDatabase) or something
-		pollToSaveToDatabase.getVoteList().forEach( e -> e.setVoteCode(generateRandomVoteID()));//generate random code
+		pollToSaveToDatabase.setUrlCode(generateRandomUrlCode()); //generate random code
+		//pollToSaveToDatabase.setCreatedAt(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+		//pollToSaveToDatabase.setAskedBy("currentUser"); //add .getUser.userDTOtoUser.getUsername()
+		pollToSaveToDatabase.setRequireName(false); //pollToSaveToDatabase.equals(pollToSaveToDatabase) or something
+		//pollToSaveToDatabase.getVoteList().forEach( e -> e.setVoteCode(generateRandomVoteID()));//generate random code
 		
 		Poll savedPoll = pollRepository.save(pollToSaveToDatabase);
 		return pollMapper.polltoDTO( savedPoll);
@@ -63,10 +63,10 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public PollDTO updatePoll(PollDTO pollDTO) {
 		// TODO Auto-generated method stub
-		if (pollRepository.existsByPollCode(pollDTO.getPollCode()))
+		if (pollRepository.existsByUrlCode(pollDTO.getUrlCode()))
 		{
-			Poll pollToUpdate = pollRepository.findByPollCode(pollDTO.getPollCode());
-			pollToUpdate.setRequire_name(pollDTO.isRequire_name());
+			Poll pollToUpdate = pollRepository.findByUrlCode(pollDTO.getUrlCode());
+			pollToUpdate.setRequireName(pollDTO.isRequireName());
 			//other members that we would like to be able to change as we add for RCV
 			
 			return pollMapper.polltoDTO(pollRepository.save(pollToUpdate));
@@ -77,14 +77,14 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public void deletePoll(PollDTO pollDTO)
 	{
-		if (pollRepository.existsByPollCode(pollDTO.getPollCode()))
+		if (pollRepository.existsByUrlCode(pollDTO.getUrlCode()))
 		{
-			Poll pollToDelete = pollRepository.findByPollCode(pollDTO.getPollCode());
-			pollRepository.deleteByPollCode(pollToDelete.getPollCode());
+			Poll pollToDelete = pollRepository.findByUrlCode(pollDTO.getUrlCode());
+			pollRepository.deleteByUrlCode(pollToDelete.getUrlCode());
 		}
 	}
 	//define the operations listed in PollService
-	public String generateRandomPollID() { // difference is poll = length 8, vote length 10
+	public String generateRandomUrlCode() { // difference is poll = length 8, vote length 10
 	    int leftLimit = 48; // numeral '0'
 	    int rightLimit = 122; // letter 'z'
 	    int targetStringLength = 8;
