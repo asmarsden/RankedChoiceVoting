@@ -2,6 +2,7 @@ package com.CS495.RankChoiceVoting.Services;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,11 +50,11 @@ public class PollServiceImpl implements PollService {
 		System.out.println(pollToSaveToDatabase.getVoteList());
 		
 		//todo: if security checks out, then entry
-		pollToSaveToDatabase.setPollCode("12345"); //generate random code
+		pollToSaveToDatabase.setPollCode(generateRandomPollID()); //generate random code
 		pollToSaveToDatabase.setCreatedAt(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 		pollToSaveToDatabase.setAskedBy("currentUser"); //add .getUser.userDTOtoUser.getUsername()
 		pollToSaveToDatabase.setRequire_name(false); //pollToSaveToDatabase.equals(pollToSaveToDatabase) or something
-		pollToSaveToDatabase.getVoteList().forEach( e -> e.setVoteCode("54321"));//generate random code
+		pollToSaveToDatabase.getVoteList().forEach( e -> e.setVoteCode(generateRandomVoteID()));//generate random code
 		
 		Poll savedPoll = pollRepository.save(pollToSaveToDatabase);
 		return pollMapper.polltoDTO( savedPoll);
@@ -62,11 +63,58 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public PollDTO updatePoll(PollDTO pollDTO) {
 		// TODO Auto-generated method stub
+		if (pollRepository.existsByPollCode(pollDTO.getPollCode()))
+		{
+			Poll pollToUpdate = pollRepository.findByPollCode(pollDTO.getPollCode());
+			pollToUpdate.setRequire_name(pollDTO.isRequire_name());
+			//other members that we would like to be able to change as we add for RCV
+			
+			return pollMapper.polltoDTO(pollRepository.save(pollToUpdate));
+		}
 		return null;
 	}
 	
+	@Override
+	public void deletePoll(PollDTO pollDTO)
+	{
+		if (pollRepository.existsByPollCode(pollDTO.getPollCode()))
+		{
+			Poll pollToDelete = pollRepository.findByPollCode(pollDTO.getPollCode());
+			pollRepository.deleteByPollCode(pollToDelete.getPollCode());
+		}
+	}
 	//define the operations listed in PollService
+	public String generateRandomPollID() { // difference is poll = length 8, vote length 10
+	    int leftLimit = 48; // numeral '0'
+	    int rightLimit = 122; // letter 'z'
+	    int targetStringLength = 8;
+	    Random random = new Random();
+
+	    String generatedString = random.ints(leftLimit, rightLimit + 1)
+	      .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+	      .limit(targetStringLength)
+	      .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+	      .toString();
+
+	    //System.out.println(generatedString);
+	    return generatedString;
+	}
 	
+	public String generateRandomVoteID() {
+	    int leftLimit = 48; // numeral '0'
+	    int rightLimit = 122; // letter 'z'
+	    int targetStringLength = 10;
+	    Random random = new Random();
+
+	    String generatedString = random.ints(leftLimit, rightLimit + 1)
+	      .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+	      .limit(targetStringLength)
+	      .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+	      .toString();
+
+	    //System.out.println(generatedString);
+	    return generatedString;
+	}
 	
 	
 }
