@@ -17,7 +17,9 @@ export class Poll {
 }
 
 export class Vote {
-  voteCode?: number;
-  voterName?: string;
+  id: number;
+  name: string;
+  voteCount: number;
+  code: string;
   //will add info for vote once that is completed in backend
 }

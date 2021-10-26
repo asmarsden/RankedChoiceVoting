@@ -20,13 +20,13 @@ export class AddPollComponent implements OnInit {
     this.poll.askedBy = '';
     this.poll.multipleAnswer = false;
     this.poll.require_name = false;
-    this.poll.optionList = [];
     this.poll.voteList = [];
-    this.poll.voteList.push(new Vote())
+    this.poll.voteList.push(new Vote());
   }
   
 
   ngOnInit() {
+  //might need stuff in here to make program run
   }
 
   add() {
