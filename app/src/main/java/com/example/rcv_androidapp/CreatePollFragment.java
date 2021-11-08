@@ -9,7 +9,7 @@ import android.widget.CompoundButton;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.rcv_androidapp.databinding.FragmentSecondBinding;
+import com.example.rcv_androidapp.databinding.FragmentCreatePollBinding;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,16 +17,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SecondFragment extends Fragment {
+public class CreatePollFragment extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentCreatePollBinding binding;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = FragmentCreatePollBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
 

@@ -12,17 +12,17 @@
         tools:layout="@layout/fragment_menu">
 
         <action
-            android:id="@+id/action_MenuFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_MenuFragment_to_CreatePollFragment"
+            app:destination="@id/CreatePollFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.rcv_androidapp.SecondFragment"
+        android:id="@+id/CreatePollFragment"
+        android:name="com.example.rcv_androidapp.CreatePollFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_create_poll">
 
         <action
-            android:id="@+id/action_SecondFragment_to_MenuFragment"
+            android:id="@+id/action_CreatePollFragment_to_MenuFragment"
             app:destination="@id/MenuFragment" />
     </fragment>
 </navigation>
