@@ -1,21 +1,15 @@
 package com.example.rcv_androidapp;
 
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.rcv_androidapp.databinding.FragmentSecondBinding;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +20,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-    private VotingApi votingApi;
 
     @Override
     public View onCreateView(
@@ -75,8 +68,8 @@ public class SecondFragment extends Fragment {
             return;
         }
         Poll newPoll = new Poll();
-        newPoll.setCreatorId("temporaryCreatorID"); //few ways we could deal with create_id generation (finish later regardless)
-        //no need to set url_code here. server will do that for us.
+        newPoll.setCreatorId("temporaryCreatorID"); //few ways we could deal with createId generation (finish later regardless)
+        //no need to set urlCode here. server will do that for us.
         newPoll.setQuestion(binding.editTextPollQuestion.getText().toString());
         String endDate = binding.editTextEndDate.getText().toString();
         String endTime = binding.editTextEndTime.getText().toString();
