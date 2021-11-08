@@ -8,9 +8,9 @@ public class Poll {
     private String creatorId;
     private String urlCode;
     private String question;
+    private boolean isActive;
     private String endTime; //java.time.LocalDateTime
     private boolean requireName;
-    private boolean requirePassword;
     private String password;
     private String[] candidates;
     private List<Ballot> ballots;
@@ -43,6 +43,13 @@ public class Poll {
         this.question = question;
     }
 
+    public boolean isActive() {
+        return isActive;
+    }
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
     public String getEndTime() {
         return endTime;
     }
@@ -55,13 +62,6 @@ public class Poll {
     }
     public void setRequireName(boolean require_name) {
         this.requireName = require_name;
-    }
-
-    public boolean isRequirePassword() {
-        return requirePassword;
-    }
-    public void setRequirePassword(boolean requirePassword) {
-        this.requirePassword = requirePassword;
     }
 
     public String getPassword() {

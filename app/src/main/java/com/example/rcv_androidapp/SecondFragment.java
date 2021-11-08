@@ -108,7 +108,6 @@ public class SecondFragment extends Fragment {
                 content += "question: " + pollResponse.getQuestion() + "\n";
                 content += "endTime: " + pollResponse.getEndTime() + "\n";
                 content += "requireName?: " + pollResponse.isRequireName() + "\n";
-                content += "requirePassword?: " + pollResponse.isRequirePassword() + "\n";
                 content += "password: " + pollResponse.getPassword() + "\n";
                 content += "candidates: " + "\n";
                 for (String candidate : pollResponse.getCandidates()) {
