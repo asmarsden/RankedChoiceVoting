@@ -106,6 +106,7 @@ public class SecondFragment extends Fragment {
                 content += "creatorId: " + pollResponse.getCreatorId() + "\n";
                 content += "urlCode: " + pollResponse.getUrlCode() + "\n";
                 content += "question: " + pollResponse.getQuestion() + "\n";
+                content += "isActive?: " + pollResponse.isActive() + "\n";
                 content += "endTime: " + pollResponse.getEndTime() + "\n";
                 content += "requireName?: " + pollResponse.isRequireName() + "\n";
                 content += "password: " + pollResponse.getPassword() + "\n";
