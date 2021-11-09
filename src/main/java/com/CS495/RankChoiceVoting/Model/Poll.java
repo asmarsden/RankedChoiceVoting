@@ -22,10 +22,9 @@ public class Poll {
   private String endTime;
   //public String askedBy; //creatorID / userID
   private boolean requireName;
-  private boolean requirePassword;
   private String password; //null if no password is required
   private String[] candidates;
-  private List<Ballot> ballots;
+  private List<String> ballots;
   //public String createdAt;
   //public List<Vote> voteList;
   
@@ -41,7 +40,9 @@ public class Poll {
 //  }
 //  
   
-
+  public void appendBallot(String ballotCode) {
+	  this.ballots.add(ballotCode);
+  }
 	public String getPollId() {
 	    return pollId;
 	}
@@ -84,12 +85,6 @@ public class Poll {
 	    this.requireName = requireName;
 	}
 	
-	public boolean isRequirePassword() {
-	    return requirePassword;
-	}
-	public void setRequirePassword(boolean requirePassword) {
-	    this.requirePassword = requirePassword;
-	}
 	
 	public String getPassword() {
 	    return password;
@@ -105,31 +100,33 @@ public class Poll {
 	    this.candidates = candidates;
 	}
 	
-	public List<Ballot> getBallots() {
-	    return ballots;
+	
+
+	//@Override
+//public boolean equals(Object obj) {
+	//	if (this == obj)
+		//		return true;
+	//	if (obj == null)
+		//		return false;
+	//	if (getClass() != obj.getClass())
+		//		return false;
+	//	Poll other = (Poll) obj; //confused about these two lines
+	//	//return requireName == other.requireName;
+//}
+
+public List<String> getBallots() {
+		return ballots;
 	}
-	public void setBallots(List<Ballot> ballots) {
-    this.ballots = ballots;
-}
 
-
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Poll other = (Poll) obj; //confused about these two lines
-	return requireName == other.requireName;
-}
+	public void setBallots(List<String> ballots) {
+		this.ballots = ballots;
+	}
 
 @Override
   public String toString() { //missing candidates and ballots for now
     return String.format(
-    "Poll[poll_id=%s, creator_id='%s', url_code='%s', question='%s', end_time='%s', require_name='%s', require_password='%s', password='%s']",
-    pollId, creatorId, urlCode, question, endTime, requireName, requirePassword, password);
+    "Poll[poll_id=%s, creator_id='%s', url_code='%s', question='%s', end_time='%s', require_name='%s', password='%s']",
+    pollId, creatorId, urlCode, question, endTime, requireName, password);
   }
 
 }

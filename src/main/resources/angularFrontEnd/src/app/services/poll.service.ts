@@ -20,7 +20,7 @@ export class PollService {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
-  create(data: any): Observable<any> {
+  create(poll: Poll): Observable<any> {
     return this.http.post(baseUrl, data);
   }
 

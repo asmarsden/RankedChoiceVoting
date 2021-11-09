@@ -16,23 +16,22 @@ import com.CS495.RankChoiceVoting.Model.Ballot;
 @AllArgsConstructor
 public class PollDTO
 {
-	private String pollId;
+	//private String pollId;
     private String creatorId;
     private String urlCode;
     private String question;
     private String endTime; //java.time.LocalDateTime
     private boolean requireName;
-    private boolean requirePassword;
     private String password;
     private String[] candidates;
-    private List<Ballot> ballots;
+    private List<String> ballots;
 
-    public String getPollId() {
-        return pollId;
-    }
-    public void setPollId(String pollId) {
-        this.pollId = pollId;
-    }
+    //public String getPollId() {
+     //   return pollId;
+   // }
+    //public void setPollId(String pollId) {
+     //   this.pollId = pollId;
+    //}/
 
     public String getCreatorId() {
         return creatorId;
@@ -69,12 +68,6 @@ public class PollDTO
         this.requireName = requireName;
     }
 
-    public boolean isRequirePassword() {
-        return requirePassword;
-    }
-    public void setRequirePassword(boolean requirePassword) {
-        this.requirePassword = requirePassword;
-    }
 
     public String getPassword() {
         return password;
@@ -90,10 +83,10 @@ public class PollDTO
         this.candidates = candidates;
     }
 
-    public List<Ballot> getBallots() {
+    public List<String> getBallots() {
         return ballots;
     }
-    public void setBallots(List<Ballot> ballots) {
+    public void setBallots(List<String> ballots) {
         this.ballots = ballots;
     }
 }

@@ -23,3 +23,9 @@ export class Vote {
   code: string;
   //will add info for vote once that is completed in backend
 }
+
+// export class Ballot {
+//	id: number;
+//	name: string;
+//	rankings: Array<int>;
+	//}

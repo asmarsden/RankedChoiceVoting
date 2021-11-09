@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import com.CS495.RankChoiceVoting.Model.Vote;
+import com.CS495.RankChoiceVoting.Model.User;
 
 @Data
 @NoArgsConstructor

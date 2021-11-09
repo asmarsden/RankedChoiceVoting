@@ -46,6 +46,7 @@ public class PollServiceImpl implements PollService {
 		pollToSaveToDatabase = pollMapper.pollDTOtoPoll(poll);
 		//System.out.println(poll.getVoteList());
 		System.out.println(pollToSaveToDatabase.getQuestion());
+		//pollToSaveToDatabase.
 		//System.out.println("question above this and vote list below this");
 		//System.out.println(pollToSaveToDatabase.getVoteList());
 		
@@ -53,7 +54,7 @@ public class PollServiceImpl implements PollService {
 		pollToSaveToDatabase.setUrlCode(generateRandomUrlCode()); //generate random code
 		//pollToSaveToDatabase.setCreatedAt(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 		//pollToSaveToDatabase.setAskedBy("currentUser"); //add .getUser.userDTOtoUser.getUsername()
-		pollToSaveToDatabase.setRequireName(false); //pollToSaveToDatabase.equals(pollToSaveToDatabase) or something
+		//pollToSaveToDatabase.setRequireName(false); //pollToSaveToDatabase.equals(pollToSaveToDatabase) or something
 		//pollToSaveToDatabase.getVoteList().forEach( e -> e.setVoteCode(generateRandomVoteID()));//generate random code
 		
 		Poll savedPoll = pollRepository.save(pollToSaveToDatabase);
@@ -66,7 +67,7 @@ public class PollServiceImpl implements PollService {
 		if (pollRepository.existsByUrlCode(pollDTO.getUrlCode()))
 		{
 			Poll pollToUpdate = pollRepository.findByUrlCode(pollDTO.getUrlCode());
-			pollToUpdate.setRequireName(pollDTO.isRequireName());
+			//pollToUpdate.setRequireName(pollDTO.isRequireName());
 			//other members that we would like to be able to change as we add for RCV
 			
 			return pollMapper.polltoDTO(pollRepository.save(pollToUpdate));
@@ -83,7 +84,7 @@ public class PollServiceImpl implements PollService {
 			pollRepository.deleteByUrlCode(pollToDelete.getUrlCode());
 		}
 	}
-	//define the operations listed in PollService
+
 	public String generateRandomUrlCode() { // difference is poll = length 8, vote length 10
 	    int leftLimit = 48; // numeral '0'
 	    int rightLimit = 122; // letter 'z'
