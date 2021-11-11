@@ -71,9 +71,9 @@ public class CreatePollFragment extends Fragment {
         newPoll.setCreatorId("temporaryCreatorID"); //few ways we could deal with createId generation (finish later regardless)
         //no need to set urlCode here. server will do that for us.
         newPoll.setQuestion(binding.editTextPollQuestion.getText().toString());
-        String endDate = binding.editTextEndDate.getText().toString();
-        String endTime = binding.editTextEndTime.getText().toString();
-        newPoll.setEndTime(endDate + "T" + endTime + ":00");
+//        String endDate = binding.editTextEndDate.getText().toString();
+//        String endTime = binding.editTextEndTime.getText().toString();
+//        newPoll.setEndTime(endDate + "T" + endTime + ":00");
         String[] candidates = {binding.editTextCandidate1.getText().toString(), binding.editTextCandidate2.getText().toString()};
         newPoll.setCandidates(candidates);
         newPoll.setRequireName(binding.checkBoxNameOption.isChecked());
@@ -107,7 +107,7 @@ public class CreatePollFragment extends Fragment {
                 content += "urlCode: " + pollResponse.getUrlCode() + "\n";
                 content += "question: " + pollResponse.getQuestion() + "\n";
                 content += "isActive?: " + pollResponse.isActive() + "\n";
-                content += "endTime: " + pollResponse.getEndTime() + "\n";
+//                content += "endTime: " + pollResponse.getEndTime() + "\n";
                 content += "requireName?: " + pollResponse.isRequireName() + "\n";
                 content += "password: " + pollResponse.getPassword() + "\n";
                 content += "candidates: " + "\n";
@@ -135,18 +135,18 @@ public class CreatePollFragment extends Fragment {
             binding.txtPollQuestionWarning.setVisibility(View.VISIBLE);
             anyErrors = true;
         }
-        if (binding.editTextEndDate.getText().toString().equals("")) {
-            binding.txtEndDateWarning.setVisibility(View.VISIBLE);
-            anyErrors = true;
-        } else {
-            //check for formatting
-        }
-        if (binding.editTextEndTime.getText().toString().equals("")) {
-            binding.txtEndTimeWarning.setVisibility(View.VISIBLE);
-            anyErrors = true;
-        } else {
-            //check for formatting
-        }
+//        if (binding.editTextEndDate.getText().toString().equals("")) {
+//            binding.txtEndDateWarning.setVisibility(View.VISIBLE);
+//            anyErrors = true;
+//        } else {
+//            //check for formatting
+//        }
+//        if (binding.editTextEndTime.getText().toString().equals("")) {
+//            binding.txtEndTimeWarning.setVisibility(View.VISIBLE);
+//            anyErrors = true;
+//        } else {
+//            //check for formatting
+//        }
         if (binding.editTextCandidate1.getText().toString().equals("")) {
             binding.txtCandidate1Warning.setVisibility(View.VISIBLE);
             anyErrors = true;
@@ -165,8 +165,8 @@ public class CreatePollFragment extends Fragment {
 
     private void hideWarnings() {
         binding.txtPollQuestionWarning.setVisibility(View.GONE);
-        binding.txtEndDateWarning.setVisibility(View.GONE);
-        binding.txtEndTimeWarning.setVisibility(View.GONE);
+//        binding.txtEndDateWarning.setVisibility(View.GONE);
+//        binding.txtEndTimeWarning.setVisibility(View.GONE);
         binding.txtCandidate1Warning.setVisibility(View.GONE);
         binding.txtCandidate2Warning.setVisibility(View.GONE);
         binding.txtPasswordWarning.setVisibility(View.GONE);

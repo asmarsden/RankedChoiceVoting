@@ -10,7 +10,6 @@
         android:name="com.example.rcv_androidapp.MenuFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_menu">
-
         <action
             android:id="@+id/action_MenuFragment_to_CreatePollFragment"
             app:destination="@id/CreatePollFragment" />
@@ -20,9 +19,21 @@
         android:name="com.example.rcv_androidapp.CreatePollFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_create_poll">
-
         <action
             android:id="@+id/action_CreatePollFragment_to_MenuFragment"
             app:destination="@id/MenuFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/CreateAccountFragment"
+        android:name="com.example.rcv_androidapp.CreateAccountFragment"
+        tools:layout="@layout/fragment_create_account">
+        <action
+            android:id="@+id/action_CreateAccountFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.example.rcv_androidapp.LoginFragment"
+        tools:layout="@layout/fragment_login" />
+
 </navigation>

@@ -23,10 +23,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Candidate 1"
-        android:layout_marginTop="15dp"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEndTime" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPollQuestion" />
 
     <EditText
         android:id="@+id/editTextCandidate2"
@@ -95,26 +94,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextEndDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="End Date (MM/DD/YY)"
-        android:inputType="date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPollQuestion" />
-
-    <EditText
-        android:id="@+id/editTextEndTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="End Time (HH:MM)"
-        android:inputType="time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEndDate" />
-
     <TextView
         android:id="@+id/txtPollQuestionWarning"
         android:layout_width="wrap_content"
@@ -124,26 +103,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/editTextPollQuestion"
         app:layout_constraintStart_toEndOf="@+id/editTextPollQuestion"
         app:layout_constraintTop_toTopOf="@+id/editTextPollQuestion" />
-
-    <TextView
-        android:id="@+id/txtEndDateWarning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FF0000"
-        android:text="End Date Required"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextEndDate"
-        app:layout_constraintStart_toEndOf="@+id/editTextEndDate"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPollQuestion" />
-
-    <TextView
-        android:id="@+id/txtEndTimeWarning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FF0000"
-        android:text="End Time Required"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextEndTime"
-        app:layout_constraintStart_toEndOf="@+id/editTextEndTime"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEndDate" />
 
     <TextView
         android:id="@+id/txtCandidate1Warning"
