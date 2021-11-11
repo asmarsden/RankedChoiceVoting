@@ -22,11 +22,36 @@
         android:layout_width="269dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
-        android:text="Drag and rank the candidates.\nNot all candidates need to be ranked."
         android:gravity="center"
+        android:text="Drag and rank the candidates.\nNot all candidates need to be ranked."
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextUrlCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="urlCode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructions" />
+
+    <Button
+        android:id="@+id/btnGetCandidates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:scaleX="0.85"
+        android:scaleY="0.85"
+        android:text="Get Candidates"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextUrlCode"
+        app:layout_constraintStart_toEndOf="@+id/editTextUrlCode"
+        app:layout_constraintTop_toTopOf="@+id/editTextUrlCode"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
