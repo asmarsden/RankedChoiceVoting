@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import com.CS495.RankChoiceVoting.DataTransferObjects.UserDTO;
 import com.CS495.RankChoiceVoting.Model.User;
+import com.CS495.RankChoiceVoting.Repository.PollRepository;
 import com.CS495.RankChoiceVoting.Repository.UserRepository;
 import com.CS495.RankChoiceVoting.mappers.UserMapper;
 
@@ -21,7 +22,8 @@ public class UserServiceImpl implements UserService
 	@Autowired
 	private UserMapper userMapper;
 	
-	
+	@Autowired
+	private PollRepository pollRespository;
 	
 	
 	@Override
@@ -38,7 +40,12 @@ public class UserServiceImpl implements UserService
 		User savedUser = userRepository.save(userToSave);
 		return savedUser;
 	}
-	
-	
+	public void addPolltoUserList(String pollId) 
+	{
+		//Still working
+		//Use findbyPollId to get correct pollId and then use
+		//appendPollList to add pollId to the list
+		
+	}
 	
 }

@@ -7,7 +7,8 @@ import com.CS495.RankChoiceVoting.Model.User;
 
 public interface UserService 
 {
-	//Changed from User create ( UserDTO userDTO);
+	//Function for creating a new user
 	User create(UserDTO userDTO);
-	
+	//Adds Poll to User List
+	void addPolltoUserList(String pollId);
 }

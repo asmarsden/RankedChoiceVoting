@@ -1,5 +1,7 @@
 package com.CS495.RankChoiceVoting.Model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,6 +14,8 @@ public class User{
 	public String userName;
 	
 	public String password;
+	
+	public List<String> userPolls; 
 	
 	public String getPassword() {
 		return password;
@@ -37,6 +41,10 @@ public class User{
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	
+	public void appendPollList(String pollId) {
+		this.userPolls.add(pollId);
 	}
 	
 }
