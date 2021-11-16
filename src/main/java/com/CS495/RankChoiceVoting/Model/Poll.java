@@ -22,7 +22,14 @@ public class Poll {
   private String endTime;
   //public String askedBy; //creatorID / userID
   private boolean requireName;
-  private String password; //null if no password is required
+  private boolean status = true;
+  private boolean isStatus() {
+	return status;
+}
+
+
+
+private String password; //null if no password is required
   private String[] candidates;
   private List<String> ballots;
   //public String createdAt;
@@ -39,6 +46,10 @@ public class Poll {
 //    //this.createdAt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 //  }
 //  
+  
+  public void setStatus(boolean status) {
+		this.status = status;
+	}
   
   public void appendBallot(String ballotCode) {
 	  this.ballots.add(ballotCode);

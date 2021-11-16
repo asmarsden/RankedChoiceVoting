@@ -63,13 +63,12 @@ public class PollServiceImpl implements PollService {
 
 	@Override
 	public PollDTO updatePoll(PollDTO pollDTO) {
-		// TODO Auto-generated method stub
 		if (pollRepository.existsByUrlCode(pollDTO.getUrlCode()))
 		{
 			Poll pollToUpdate = pollRepository.findByUrlCode(pollDTO.getUrlCode());
 			//pollToUpdate.setRequireName(pollDTO.isRequireName());
 			//other members that we would like to be able to change as we add for RCV
-			
+
 			return pollMapper.polltoDTO(pollRepository.save(pollToUpdate));
 		}
 		return null;
@@ -83,6 +82,20 @@ public class PollServiceImpl implements PollService {
 			Poll pollToDelete = pollRepository.findByUrlCode(pollDTO.getUrlCode());
 			pollRepository.deleteByUrlCode(pollToDelete.getUrlCode());
 		}
+	}
+	
+	@Override
+	public void endPoll(String pollCode)
+	{
+		if (pollRepository.existsByUrlCode(pollCode))
+		{
+			Poll pollToEnd = pollRepository.findByUrlCode(pollCode);
+			pollToEnd.setStatus(false);
+			//pollMapper.polltoDTO(pollToEnd);
+			pollRepository.save(pollToEnd);
+			
+		}
+		
 	}
 
 	public String generateRandomUrlCode() { // difference is poll = length 8, vote length 10

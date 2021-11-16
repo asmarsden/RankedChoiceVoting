@@ -8,13 +8,12 @@ public interface PollService {
 	
 	public PollDTO createPoll (PollDTO poll);
 	
-	public PollDTO updatePoll (PollDTO pollDTO); //why is one named pollDTO and not the other?
+	public PollDTO updatePoll (PollDTO pollDTO); //why is one named pollDTO and not the other? <-- no reason
 
 	public void deletePoll (PollDTO pollDTO);
 	
-	//findby user
-	//find all polls -> List<PollDTO>
-	//updatePoll 
+	public void endPoll (String pollCode);
+	
 	
 		
 }
