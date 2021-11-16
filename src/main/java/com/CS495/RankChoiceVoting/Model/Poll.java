@@ -23,6 +23,8 @@ public class Poll {
   //public String askedBy; //creatorID / userID
   private boolean requireName;
   private boolean status = true;
+  
+  
   private boolean isStatus() {
 	return status;
 }

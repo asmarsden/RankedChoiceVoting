@@ -31,6 +31,12 @@ public class PollController {
              return pollService.findPollByUrlCode( code );
      }
 	 
+	 @PostMapping ("/{code}/end")
+	 public PollDTO endPoll (@PathVariable("code") String code)
+	 {
+		 return pollService.endPoll(code);
+	 }
+	 
 	@PostMapping
 	public PollDTO initializePoll(@RequestBody PollDTO poll)
 	{

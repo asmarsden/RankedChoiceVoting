@@ -53,9 +53,9 @@ public class BallotServiceImpl implements BallotService {
 		ballotToCast.setParentPollCode(pollCode);
 		ballotToCast.setBallotCode(generateRandomBallotID());
 		ballotRepository.save(ballotToCast);
-		poll.appendBallot(ballotToCast.getBallotCode());
+		//poll.appendBallot(ballotToCast.getBallotCode());
 		PollDTO pollToUpdate = pollMapper.polltoDTO(poll);
-		pollService.updatePoll(pollToUpdate);
+		pollService.updatePollBallots(pollToUpdate, ballotToCast.getBallotCode());
 	}
 	
 	@Override

@@ -6,13 +6,15 @@ public interface PollService {
 	//crud operations for polls
 	public PollDTO findPollByUrlCode (String urlCode);
 	
-	public PollDTO createPoll (PollDTO poll);
+	public PollDTO createPoll (PollDTO pollDTO);
 	
 	public PollDTO updatePoll (PollDTO pollDTO); //why is one named pollDTO and not the other? <-- no reason
+	
+	public PollDTO updatePollBallots (PollDTO pollDTO, String ballotCode);
 
 	public void deletePoll (PollDTO pollDTO);
 	
-	public void endPoll (String pollCode);
+	public PollDTO endPoll (String pollCode);
 	
 	
 		

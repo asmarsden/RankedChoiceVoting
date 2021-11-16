@@ -44,19 +44,8 @@ public class PollServiceImpl implements PollService {
 
 		Poll pollToSaveToDatabase = new Poll(); 
 		pollToSaveToDatabase = pollMapper.pollDTOtoPoll(poll);
-		//System.out.println(poll.getVoteList());
-		System.out.println(pollToSaveToDatabase.getQuestion());
-		//pollToSaveToDatabase.
-		//System.out.println("question above this and vote list below this");
-		//System.out.println(pollToSaveToDatabase.getVoteList());
-		
 		//todo: if security checks out, then entry
 		pollToSaveToDatabase.setUrlCode(generateRandomUrlCode()); //generate random code
-		//pollToSaveToDatabase.setCreatedAt(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-		//pollToSaveToDatabase.setAskedBy("currentUser"); //add .getUser.userDTOtoUser.getUsername()
-		//pollToSaveToDatabase.setRequireName(false); //pollToSaveToDatabase.equals(pollToSaveToDatabase) or something
-		//pollToSaveToDatabase.getVoteList().forEach( e -> e.setVoteCode(generateRandomVoteID()));//generate random code
-		
 		Poll savedPoll = pollRepository.save(pollToSaveToDatabase);
 		return pollMapper.polltoDTO( savedPoll);
 	}
@@ -75,6 +64,18 @@ public class PollServiceImpl implements PollService {
 	}
 	
 	@Override
+	public PollDTO updatePollBallots(PollDTO pollDTO, String ballotCode)
+	{
+		if (pollRepository.existsByUrlCode(pollDTO.getUrlCode()))
+		{
+			Poll pollToUpdate = pollRepository.findByUrlCode(pollDTO.getUrlCode());
+			pollToUpdate.appendBallot(ballotCode);
+			return pollMapper.polltoDTO(pollRepository.save(pollToUpdate));
+		}
+		return null;
+	}
+	
+	@Override
 	public void deletePoll(PollDTO pollDTO)
 	{
 		if (pollRepository.existsByUrlCode(pollDTO.getUrlCode()))
@@ -85,7 +86,7 @@ public class PollServiceImpl implements PollService {
 	}
 	
 	@Override
-	public void endPoll(String pollCode)
+	public PollDTO endPoll(String pollCode)
 	{
 		if (pollRepository.existsByUrlCode(pollCode))
 		{
@@ -93,9 +94,10 @@ public class PollServiceImpl implements PollService {
 			pollToEnd.setStatus(false);
 			//pollMapper.polltoDTO(pollToEnd);
 			pollRepository.save(pollToEnd);
+			return pollMapper.polltoDTO(pollToEnd);
 			
 		}
-		
+		return null;
 	}
 
 	public String generateRandomUrlCode() { // difference is poll = length 8, vote length 10
