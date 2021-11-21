@@ -41,11 +41,10 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextUsername" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtCreateAccount"
         android:layout_width="145dp"
         android:layout_height="23dp"
         android:layout_marginTop="16dp"
-        android:onClick="gotoCreateAccount"
         android:gravity="center"
         android:textSize="16sp"
         android:textColor="#3399FF"

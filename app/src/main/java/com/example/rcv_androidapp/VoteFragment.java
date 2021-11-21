@@ -12,6 +12,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.rcv_androidapp.databinding.FragmentMenuBinding;
 import com.example.rcv_androidapp.databinding.FragmentVoteBinding;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class VoteFragment extends Fragment {
 
     private FragmentVoteBinding binding;
@@ -33,7 +37,8 @@ public class VoteFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String urlCode = binding.editTextUrlCode.getText().toString();
-                System.out.println(urlCode);
+                Poll thisPoll = new Poll();
+                thisPoll = getPoll(urlCode);
 
             }
         });
@@ -43,5 +48,28 @@ public class VoteFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private Poll getPoll(String urlCode) {
+        Poll poll = new Poll();
+
+//        call.clone().enqueue(new Callback<Poll>() {
+//            @Override
+//            public void onResponse(Call<Poll> call, Response<Poll> response) {
+//
+//                if (!response.isSuccessful()) {
+//                    System.out.println("Code: " + response.code());
+//                    return;
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Poll> call, Throwable t) {
+//                System.out.println(t.getMessage());
+//            }
+//        });
+
+        return poll;
     }
 }
