@@ -1,7 +1,9 @@
 package com.CS495.RankChoiceVoting.Services;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.CS495.RankChoiceVoting.DataTransferObjects.PollDTO;
+import com.CS495.RankChoiceVoting.Model.Ballot;
 import com.CS495.RankChoiceVoting.Model.Poll;
 import com.CS495.RankChoiceVoting.Repository.PollRepository;
 //import com.CS495.RankChoiceVoting.Repository.VoteRepository;
@@ -21,23 +24,45 @@ public class PollServiceImpl implements PollService {
 	private PollRepository pollRepository;
 	@Autowired
 	private PollMapper pollMapper;
-	//@Autowired
-	//private VoteRepository voteRepository;
+	@Autowired
+	private BallotService ballotService;
 	
-	//@Autowired
-    //public PollServiceImpl ( PollRepository pollRepository, PollMapper pollMapper, VoteRepository voteRepository )
-    //{
-    //        this.pollRepository = pollRepository;
-    //        this.pollMapper = pollMapper;
-    //        this.voteRepository = voteRepository;
-    //}
+
 	
 	@Override
-	public PollDTO findPollByUrlCode(String pollCode) {
-		// TODO Auto-generated method stub
+	public PollDTO getPoll(String urlCode) { //send back poll status, question, candidates, name and password requirement flag.
+		if (pollRepository.existsByUrlCode(urlCode))
+		{
+			Poll pollToSend = pollRepository.findByUrlCode(urlCode);
+			pollToSend.setBallots(null);//take away the ballots from the DTO to send back, "private info"
+			pollToSend.setAdminCode(null);//dont send the admin code back either
+			return pollMapper.polltoDTO(pollToSend);
+		}
 		return null;
 	}
 
+	@Override
+	public List<String> getNames(String urlCode, String adminCode)
+	{
+		List<String> names = new ArrayList<String>();
+		//List<List<String>> names = new ArrayList<List<String>>();
+		
+		if(pollRepository.existsByUrlCode(urlCode))
+		{
+			Poll pollToGrabNamesFrom = pollRepository.findByUrlCode(urlCode);
+			if(pollToGrabNamesFrom.getAdminCode().equals(adminCode)) {
+			List<String> ballotCodes = pollToGrabNamesFrom.getBallots();
+			//Ballot ballotToGrabName = new Ballot();
+			ballotCodes.stream()
+			.forEach(e -> {
+				 names.add(ballotService.returnBallotName(e));
+			} );
+			}
+			return names;
+		}
+		
+		return null;
+	}
 	@Override
 	@Transactional
 	public PollDTO createPoll( PollDTO poll) {
@@ -86,15 +111,17 @@ public class PollServiceImpl implements PollService {
 	}
 	
 	@Override
-	public PollDTO endPoll(String pollCode)
+	public PollDTO endPoll(String urlCode, String adminCode)
 	{
-		if (pollRepository.existsByUrlCode(pollCode))
+		if (pollRepository.existsByUrlCode(urlCode))
 		{
-			Poll pollToEnd = pollRepository.findByUrlCode(pollCode);
+			Poll pollToEnd = pollRepository.findByUrlCode(urlCode);
+			if(pollToEnd.getAdminCode() == adminCode) {
 			pollToEnd.setStatus(false);
 			//pollMapper.polltoDTO(pollToEnd);
 			pollRepository.save(pollToEnd);
 			return pollMapper.polltoDTO(pollToEnd);
+			}
 			
 		}
 		return null;

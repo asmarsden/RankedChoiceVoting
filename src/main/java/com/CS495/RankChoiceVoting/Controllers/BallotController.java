@@ -28,9 +28,9 @@ public class BallotController {
 		//return ballotService.castBallot(ballotCode)
 	}
 	
-	@PutMapping
-	public void putAllVotes (@RequestBody List<String> ballotCodes /*, http servlet request to grab ip for future purposes*/)
+	@PostMapping(value = "/delete_ballot/{urlCode}/{adminCode}/{name}")
+	public void deleteBallot(@PathVariable("urlCode") String urlCode, @PathVariable("adminCode") String adminCode, @PathVariable("name") String nameOnBallot)
 	{
-		ballotService.castAllBallots(ballotCodes /*request.getRemoteAddr(); */);
+		ballotService.deleteBallot(urlCode, adminCode, nameOnBallot);
 	}
 }

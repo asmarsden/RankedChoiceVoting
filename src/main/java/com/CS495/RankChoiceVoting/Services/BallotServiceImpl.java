@@ -59,23 +59,18 @@ public class BallotServiceImpl implements BallotService {
 	}
 	
 	@Override
-	public void castAllBallots(List<String> ballotCodes /*, String ip */)
+	public String returnBallotName(String ballotCode)
 	{
-		 //if ( voteCodes != null && !voteCodes.isEmpty() )
-        // {
-                 //Poll poll = pollRepository.findByVotesList( voteRepository.findByVoteCode( voteCodes.get( 0 ) ).get() );
-                //if check for user having voted already when multiplevotes is disabled {}
-                 
-                         
-
-                 ballotCodes.stream() //filter by each voteCode in list, find it, get it, update voteCount and save the vote
-                         .map( ballotRepository::findByBallotCode )
-                         .map( Optional::get )
-                         .forEach( e -> {
-                                // e.setVoteCount( e.getVoteCount() + 1 );
-                                 //voteRepository.save( e );
-                         } );
-         //}
+		Ballot ballot = ballotRepository.findByBallotCode(ballotCode);
+		String name = ballot.getName();
+		return name;
+	}
+	
+	
+	@Override
+	public void deleteBallot(String urlCode, String adminCode, String nameOnBallot) { //probably not going to make it in the final product
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public String generateRandomBallotID() {
@@ -93,4 +88,5 @@ public class BallotServiceImpl implements BallotService {
 	    //System.out.println(generatedString);
 	    return generatedString;
 	}
+	
 }

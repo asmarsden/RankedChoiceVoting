@@ -1,5 +1,7 @@
 package com.CS495.RankChoiceVoting.Controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,17 +26,22 @@ public class PollController {
 	@Autowired
 	private PollRepository pollRepository;
 	
+	@GetMapping("/{urlCode}")
+	public PollDTO getPoll(@PathVariable("urlCode") String urlCode)
+	{
+		return pollService.getPoll(urlCode);
+	}
 	
-	 @GetMapping ("/{code}")
-     public PollDTO getPollByCode ( @PathVariable("code") String code )
-     {
-             return pollService.findPollByUrlCode( code );
-     }
+	@GetMapping(value = "/{urlCode}/{adminCode}")
+	public List<String> getNames(@PathVariable("urlCode") String urlCode, @PathVariable("adminCode") String adminCode)
+	{
+		return pollService.getNames(urlCode, adminCode);
+	}
 	 
-	 @PostMapping ("/{code}/end")
-	 public PollDTO endPoll (@PathVariable("code") String code)
+	 @PostMapping (value = "/{urlCode}/{adminCode}/end")
+	 public PollDTO endPoll (@PathVariable("urlCode") String urlCode, @PathVariable("adminCode") String adminCode)
 	 {
-		 return pollService.endPoll(code);
+		 return pollService.endPoll(urlCode, adminCode);
 	 }
 	 
 	@PostMapping

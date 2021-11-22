@@ -17,7 +17,7 @@ import com.CS495.RankChoiceVoting.Model.Ballot;
 public class PollDTO
 {
 	//private String pollId;
-    private String creatorId;
+    private String adminCode;
     private String urlCode;
     private String question;
     private String endTime; //java.time.LocalDateTime
@@ -25,6 +25,7 @@ public class PollDTO
     private String password;
     private String[] candidates;
     private List<String> ballots;
+    private boolean status;
 
     //public String getPollId() {
      //   return pollId;
@@ -33,12 +34,14 @@ public class PollDTO
      //   this.pollId = pollId;
     //}/
 
-    public String getCreatorId() {
-        return creatorId;
-    }
-    public void setCreatorId(String creatorId) {
-        this.creatorId = creatorId;
-    }
+
+    public String getAdminCode() {
+		return adminCode;
+	}
+	public void setAdminCode(String adminCode) {
+		this.adminCode = adminCode;
+	}
+	
 
     public String getUrlCode() {
         return urlCode;

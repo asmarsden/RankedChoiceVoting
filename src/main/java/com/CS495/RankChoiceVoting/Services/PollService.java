@@ -1,10 +1,12 @@
 package com.CS495.RankChoiceVoting.Services;
 
+import java.util.List;
+
 import com.CS495.RankChoiceVoting.DataTransferObjects.PollDTO;
 
 public interface PollService {
 	//crud operations for polls
-	public PollDTO findPollByUrlCode (String urlCode);
+	//public PollDTO findPollByUrlCode (String urlCode);
 	
 	public PollDTO createPoll (PollDTO pollDTO);
 	
@@ -14,8 +16,11 @@ public interface PollService {
 
 	public void deletePoll (PollDTO pollDTO);
 	
-	public PollDTO endPoll (String pollCode);
+	public PollDTO endPoll (String urlCode, String adminCode);
+
+	public PollDTO getPoll(String urlCode);
 	
+	public List<String> getNames(String urlCode, String adminCode);
 	
 		
 }

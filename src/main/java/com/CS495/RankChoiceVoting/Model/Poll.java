@@ -16,16 +16,25 @@ public class Poll {
 
   @Id
   private String pollId; //for mongo purposes
-  private String creatorId;
+  private String adminCode;
   private String urlCode;
   private String question; //Title of poll to be voted on
   private String endTime;
   //public String askedBy; //creatorID / userID
   private boolean requireName;
   private boolean status = true;
+  private String winner;
   
   
-  private boolean isStatus() {
+  public String getWinner() {
+	return winner;
+}
+
+public void setWinner(String winner) {
+	this.winner = winner;
+}
+
+private boolean isStatus() {
 	return status;
 }
 
@@ -63,11 +72,11 @@ private String password; //null if no password is required
 	    this.pollId = pollId;
 	}
 	
-	public String getCreatorId() {
-	    return creatorId;
+	public String getAdminCode() {
+	    return adminCode;
 	}
-	public void setCreatorId(String creatorId) {
-	    this.creatorId = creatorId;
+	public void setAdminCode(String adminCode) {
+	    this.adminCode = adminCode;
 	}
 	
 	public String getUrlCode() {
@@ -138,8 +147,8 @@ public List<String> getBallots() {
 @Override
   public String toString() { //missing candidates and ballots for now
     return String.format(
-    "Poll[poll_id=%s, creator_id='%s', url_code='%s', question='%s', end_time='%s', require_name='%s', password='%s']",
-    pollId, creatorId, urlCode, question, endTime, requireName, password);
+    "Poll[poll_id=%s, admin_code='%s', url_code='%s', question='%s', end_time='%s', require_name='%s', password='%s']",
+    pollId, adminCode, urlCode, question, endTime, requireName, password);
   }
 
 }
