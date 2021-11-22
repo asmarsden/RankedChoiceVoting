@@ -5,11 +5,10 @@ import java.util.List;
 public class Poll {
 
     private String pollId;
-    private String creatorId;
+    private String adminCode;
     private String urlCode;
     private String question;
     private boolean isActive;
-    private String endTime; //java.time.LocalDateTime
     private boolean requireName;
     private String password;
     private String[] candidates;
@@ -22,11 +21,11 @@ public class Poll {
         this.pollId = poll_id;
     }
 
-    public String getCreatorId() {
-        return creatorId;
+    public String getAdminCode() {
+        return adminCode;
     }
-    public void setCreatorId(String creator_id) {
-        this.creatorId = creator_id;
+    public void setAdminCode(String admin_code) {
+        this.adminCode = admin_code;
     }
 
     public String getUrlCode() {
@@ -48,13 +47,6 @@ public class Poll {
     }
     public void setActive(boolean active) {
         isActive = active;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-    public void setEndTime(String end_time) {
-        this.endTime = end_time;
     }
 
     public boolean isRequireName() {

@@ -5,102 +5,117 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="left"
-    android:padding="8dp"
     tools:context=".CreatePollFragment">
 
-    <EditText
-        android:id="@+id/editTextPollQuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Poll Question"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnAddCandidate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Candidate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
-
-    <CheckBox
-        android:id="@+id/checkBoxNameOption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="Ask for name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddCandidate" />
-
-    <CheckBox
-        android:id="@+id/checkBoxPasswordOption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Require Password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxNameOption" />
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxPasswordOption" />
-
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="Create Poll"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/txtPollQuestionWarning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Poll Question Required"
-        android:textColor="#FF0000"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextPollQuestion"
-        app:layout_constraintStart_toEndOf="@+id/editTextPollQuestion"
-        app:layout_constraintTop_toTopOf="@+id/editTextPollQuestion" />
-
-    <TextView
-        android:id="@+id/txtPasswordWarning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password cannot be empty"
-        android:textColor="#FF0000"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextPassword"
-        app:layout_constraintStart_toEndOf="@+id/editTextPassword"
-        app:layout_constraintTop_toTopOf="@+id/editTextPassword" />
-
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="left"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPollQuestion" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/txtCandidatesWarning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="At least two candidates required"
-        android:textColor="#FF0000"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAddCandidate"
-        app:layout_constraintStart_toEndOf="@+id/btnAddCandidate"
-        app:layout_constraintTop_toTopOf="@+id/btnAddCandidate" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <EditText
+                android:id="@+id/editTextPollQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Poll Question"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtPasswordWarning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password cannot be empty"
+                android:textColor="#FF0000"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextPassword"
+                app:layout_constraintStart_toEndOf="@+id/editTextPassword"
+                app:layout_constraintTop_toTopOf="@+id/editTextPassword" />
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPollQuestion" />
+
+            <Button
+                android:id="@+id/btnAddCandidate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Add Candidate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxPasswordOption" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Create Poll"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+            <CheckBox
+                android:id="@+id/checkBoxPasswordOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Require Password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxNameOption" />
+
+            <TextView
+                android:id="@+id/txtPollQuestionWarning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Poll Question Required"
+                android:textColor="#FF0000"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextPollQuestion"
+                app:layout_constraintStart_toEndOf="@+id/editTextPollQuestion"
+                app:layout_constraintTop_toTopOf="@+id/editTextPollQuestion" />
+
+            <CheckBox
+                android:id="@+id/checkBoxNameOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Ask for name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnAddCandidate" />
+
+            <TextView
+                android:id="@+id/txtCandidatesWarning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="At least two candidates required"
+                android:textColor="#FF0000"
+                app:layout_constraintBottom_toBottomOf="@+id/btnAddCandidate"
+                app:layout_constraintStart_toEndOf="@+id/btnAddCandidate"
+                app:layout_constraintTop_toTopOf="@+id/btnAddCandidate" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
