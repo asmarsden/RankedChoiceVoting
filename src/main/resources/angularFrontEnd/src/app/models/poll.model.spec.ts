@@ -1,7 +1,7 @@
-import { Poll } from './poll.model';
+import { Ballot } from './poll.model';
 
-describe('Poll', () => {
+describe('Ballot', () => {
   it('should create an instance', () => {
-    expect(new Poll()).toBeTruthy();
+    expect(new Ballot()).toBeTruthy();
   });
 });
