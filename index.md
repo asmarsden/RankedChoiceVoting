@@ -12,37 +12,16 @@ From club elections, to friend groups choosing where to eat for lunch, ranked ch
 
 However, at the moment there are no fast, seamless options for implementing ranked choice voting in a casual or semi-casual setting. This project was created to remedy that, and give anyone the option to use ranked choice voting with just a few taps of a screen. 
 
+#### Watch this video to see how it works! 
 
-### Meet The Team
-
-* Aislinn Marsden is majoring in computer science with a minor in psychology at the University of Alabama, due to graduate in December 2021. <a href="https://www.linkedin.com/in/a-marsden/">LinkedIn</a>
-* Sam Williams is attending The University of Alabama majoring in computer science with a minor in mathematics. He is also enrolled as a graduate student and has begun working on a Masters of Businesses Administration (MBA). <a href="https://www.linkedin.com/in/samuel-j-williams/">LinkedIn</a>
-* Griffin Tucker is a Computer Science student at the University of Alabama in his (hopefully) last semester. He comes from a sports background, and is currently the President of the UA Men's Soccer Club after being a member for 4 years. 
-* Noah "Evan" Strong is a Computer Science Major, Math Minor, with a concentration in cybersecurity. He's participated in the Million Dollar Band for 4 years and is a candidate for the SMART Scholarship program. Once receiving his degree from The University of Alabama, he will begin working for USASMDC at Redstone Arsenal, Al.
+//video not complete yet
 
 
-### Links
+##<a href="https://asmarsden.github.io/RCAteamDetails/">Meet the team!</a>
 
-<a href="https://asmarsden.github.io/TeamMeetingNotes/">Meeting Notes Page</a>
-
-<a href="https://asmarsden.github.io/ProjectWebApp/">Placeholder Website for Web App</a>
-
-<a href="https://www.pivotaltracker.com/n/projects/2531907">Pivotal Tracker Task Management Project (defunct)</a>
-
-<a href="https://trello.com/b/aFmcoupn/rcv-app">Trello Task Tracker for Project</a>
-
-<a href="https://github.com/asmarsden/RankedChoiceVoting">Main Github Repository</a>
-
-<a href="https://github.com/asmarsden/TeamMeetingNotes/">Meeting Notes Github Repository</a>
-
-<a href="https://github.com/asmarsden/ProjectWebApp/">Placeholder Website Github Repository</a>
+##<a href="https://asmarsden.github.io/RCAdetails/">See details on how this was made!</a>
 
 
-### Presentations
-
-<a href="https://docs.google.com/presentation/d/1-CPbJqCmU-71WKI6QtF8ep69PD5VyS-VmmI6q4WviZ0/edit?usp=sharing">Project Pitch Presentation</a>
-
-<a href="https://docs.google.com/presentation/d/1a3QCpLTeeGtA7qJj6hE2RCa-BY3FtqECU6P4mwWfhbM/edit?usp=sharing">Sprint 1 Presentation</a>
 
 
 
