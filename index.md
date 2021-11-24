@@ -17,9 +17,9 @@ However, at the moment there are no fast, seamless options for implementing rank
 //video not complete yet
 
 
-##<a href="https://asmarsden.github.io/RCAteamDetails/">Meet the team!</a>
+## <a href="https://asmarsden.github.io/RCAteamDetails/">Meet the team!</a>
 
-##<a href="https://asmarsden.github.io/RCAdetails/">See details on how this was made!</a>
+## <a href="https://asmarsden.github.io/RCAdetails/">See details on how this was made!</a>
 
 
 
