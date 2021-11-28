@@ -1,27 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-view-poll',
+  templateUrl: './view-poll.component.html',
+  styleUrls: ['./view-poll.component.css']
 })
-export class AppComponent  {
-  title : string = "";
-  name : string="";
-  fakeData : any;
+export class ViewPollComponent implements OnInit {
   pollData : any;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.title = "zzz";
-    // this.fakeData = this.getData();
-    // console.log(this.fakeData);
-  }
-
-  doSomething() {
-    alert(this.name)
   }
 
   getPollData(){
@@ -45,4 +35,5 @@ export class AppComponent  {
       "ballots" : [] as string[]
     }
   }
+
 }
