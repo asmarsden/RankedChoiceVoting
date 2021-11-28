@@ -1,0 +1,17 @@
+<div>
+    <input type="text" id="pollCode">
+    <button (click)="getPollData()" type="button" name="button">Get Poll Data</button>
+  </div>
+  
+  <div *ngIf="pollData">
+    <br/>
+    <span>URL Code:  {{ pollData.urlCode }}</span>
+    <br/>
+    <span>Question:  {{ pollData.question }}</span>
+    <br/>
+    Candidates:
+    <br/>
+    <ul *ngFor="let candidate of pollData.candidates; index as i">
+      <li>Candidate {{i+1}}:  {{candidate}}</li>
+    </ul>
+  </div>

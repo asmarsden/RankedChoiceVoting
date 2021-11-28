@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Poll, Vote } from '../models/poll.model';
+import { Poll, Ballot } from '../models/poll.model';
 
 const baseUrl = 'http://localhost:8080/api/polls';
 
@@ -20,7 +20,7 @@ export class PollService {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
-  create(data: any): Observable<any> {
+  create(poll: Poll): Observable<any> {
     return this.http.post(baseUrl, data);
   }
 
@@ -38,5 +38,14 @@ export class PollService {
 
   findByName(askedBy: any): Observable<Poll[]> {
     return this.http.get<Poll[]>(`${baseUrl}?askedBy=${askedBy}`);
+  }
+}
+
+export class BallotService {
+
+  constructor(private http: HttpClient) { }
+
+  create(ballot: Ballot): Observable<any> {
+    return this.http.post(baseUrl, data);
   }
 }

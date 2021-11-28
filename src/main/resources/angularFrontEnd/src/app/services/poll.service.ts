@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Poll, Ballot } from '../models/poll.model';
+import { Poll } from '../models/poll.model';
+import { Ballot } from '../models/ballot.model';
 
-const baseUrl = 'http://localhost:8080/api/polls';
+const baseUrl = 'http://localhost:8080/api/view-poll';
+//will need to change this baseUrl once it's ready for prod
 
 @Injectable({
   providedIn: 'root'
@@ -12,40 +14,12 @@ export class PollService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Poll[]> {
-    return this.http.get<Poll[]>(baseUrl);
-  }
-
-  get(id: any): Observable<Poll> {
+  get(id: any): Observable<Poll> { //this will just return a whole poll, then i can do like poll.whatever to get the details
     return this.http.get(`${baseUrl}/${id}`);
   }
 
-  create(poll: Poll): Observable<any> {
-    return this.http.post(baseUrl, data);
-  }
-
-  update(id: any, data: any): Observable<any> {
+  update(id: any, data: any): Observable<any> { //this is gonna be needed in order to update a poll w new ballots
     return this.http.put(`${baseUrl}/${id}`, data);
   }
 
-  delete(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
-  }
-
-  deleteAll(): Observable<any> {
-    return this.http.delete(baseUrl);
-  }
-
-  findByName(askedBy: any): Observable<Poll[]> {
-    return this.http.get<Poll[]>(`${baseUrl}?askedBy=${askedBy}`);
-  }
-}
-
-export class BallotService {
-
-  constructor(private http: HttpClient) { }
-
-  create(ballot: Ballot): Observable<any> {
-    return this.http.post(baseUrl, data);
-  }
 }

@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PollsListComponent } from './components/polls-list/polls-list.component';
-import { PollDetailsComponent } from './components/poll-details/poll-details.component';
-import { AddBallotComponent } from './components/add-ballot/add-ballot.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AddBallotComponent } from 'src/app/components/add-ballot/add-ballot.component';
+import { ViewPollComponent } from 'src/app/components/view-poll/view-poll.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'polls', pathMatch: 'full' },
-  { path: 'polls', component: PollsListComponent },
-  { path: 'polls/:id', component: PollDetailsComponent },
-  { path: 'add', component: AddBallotComponent }
+  { path: 'add-ballot', component: AddBallotComponent },
+  { path: 'view-poll', component: ViewPollComponent }
+  //might need a path for homepage but im not worried abt that right now 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

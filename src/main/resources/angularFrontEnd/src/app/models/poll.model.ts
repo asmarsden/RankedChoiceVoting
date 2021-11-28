@@ -1,9 +1,4 @@
-//import { ExecSyncOptionsWithStringEncoding } from "child_process";
-import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
-
-
 export class Poll {
-  //i dont think ill need much of this except the name, codes, and option lists for the angular to work but we'll see 
   pollCode?: number;
   pollQuestion?: string;
   askedBy?: string;
@@ -13,13 +8,5 @@ export class Poll {
   require_name?: boolean;
   published?: boolean;
   ballotList?: Array<string>;
+  winner?: string; //idk if this is defined in the data at the level of springboot but it should be, makes it easier to display, well, the winner
 }
-
-export class Ballot {
-  ballotId: string;
-  name: string;
-  ranking: Array<number>;
-  parentPollCode: string;
-  ballotCode: string;
-}
-

@@ -1,0 +1,35 @@
+<div class="container" style="margin: 50px;">
+  <div class="card border-primar">
+      <div class="card-header">
+          <div class="card-body text-primary">
+              <form [formGroup]= "dropDownForm">
+                  <div class="form-group">
+                      <label>Vote here!</label>
+                      <select formControlName= "first_choice" (change)= "GetSateById($event)" class="form-control">
+                          <option value="0">First Choice</option>
+                          <option [value]= "first.id" *ngFor = "let first of optionList">{{country.countryName}}</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label>??</label>
+                      <select formControlName= "second_choice" class="form-control">
+                          <option value="0">Second Choice</option>
+                          <option [value]= "second.id" *ngFor= "let second of optionList">{{st.stateName}}</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                    <label>??</label>
+                    <select formControlName= "third_choice" (change)= "GetSateById($event)" class="form-control">
+                        <option value="0">Third Choice</option>
+                        <option [value]= "third.id" *ngFor = "let third of optionList">{{country.countryName}}</option>
+                    </select>
+                </div>
+
+                  <div>
+                      <button (click)="Save()" class="btn btn-success">Send Vote!</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

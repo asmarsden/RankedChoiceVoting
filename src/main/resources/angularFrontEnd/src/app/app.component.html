@@ -1,17 +1,20 @@
 <div>
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">Ranked Choice Voting</a>
-    <div class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a routerLink="polls" class="nav-link">View a Poll</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="add" class="nav-link">Vote on a Poll</a>
-      </li>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <a href="#" class="navbar-brand">Ranked Choice Voting</a>
+      <div class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="/view-poll" class="nav-link">View Poll Results</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/add-ballot" class="nav-link">Vote on a Poll</a>
+        </li>
+      </div>
+    </nav>
+    <div class="container mt-3">
+      <router-outlet></router-outlet>
     </div>
-  </nav>
-
-  <div class="container mt-3">
-    <router-outlet></router-outlet>
+    <! --- here is where info for the homepage will be, but we dont really have anything for a homepage. it just looks too bare right now so later ill worry about it --->
   </div>
-</div>
+
+
+
