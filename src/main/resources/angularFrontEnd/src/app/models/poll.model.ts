@@ -1,12 +1,14 @@
 export class Poll {
-  pollCode?: number;
-  pollQuestion?: string;
+  adminCode?: number;
+  urlCode?: number;
+  question?: string;
   askedBy?: string;
-  optionList?: Array<string>;
+  candidates?: Array<string>;
   multipleAnswer?: boolean;
   createdAt?: string;
-  require_name?: boolean;
+  requireName?: boolean;
+  password?: string;
   published?: boolean;
-  ballotList?: Array<string>;
+  ballots?: Array<string>;
   winner?: string; //idk if this is defined in the data at the level of springboot but it should be, makes it easier to display, well, the winner
 }

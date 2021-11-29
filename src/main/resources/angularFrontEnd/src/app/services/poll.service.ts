@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { Poll } from '../models/poll.model';
 import { Ballot } from '../models/ballot.model';
 
-const baseUrl = 'http://localhost:8080/api/view-poll';
-//will need to change this baseUrl once it's ready for prod
+const baseUrl = 'http://localhost:8080/api/poll';
+//will need to change this baseUrl once it's ready for prod. also not even sure if this is the right url. it Should be
 
 @Injectable({
   providedIn: 'root'

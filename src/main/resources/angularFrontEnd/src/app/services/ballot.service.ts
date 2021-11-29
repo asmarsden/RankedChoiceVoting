@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ballot } from '../models/ballot.model';
 
-const baseUrl = 'http://localhost:8080/api/add-ballot';
+const baseUrl = 'http://localhost:8080/api/poll';
 //this baseUrl will have to change once this is ready for production
 
 @Injectable({

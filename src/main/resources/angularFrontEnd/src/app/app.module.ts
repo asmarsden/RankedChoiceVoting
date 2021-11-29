@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ViewPollComponent } from 'src/app/components/view-poll/view-poll.component';
 import { AddBallotComponent } from 'src/app/components/add-ballot/add-ballot.component';
+import { LogService } from 'src/app/log.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { AddBallotComponent } from 'src/app/components/add-ballot/add-ballot.com
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
