@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/AdminViewFragment"
-        android:name="com.example.rcv_androidapp.CreatePollFragment"
+        android:name="com.example.rcv_androidapp.AdminViewFragment"
         android:label="@string/third_fragment_label"
         tools:layout="@layout/fragment_admin_view">
         <action

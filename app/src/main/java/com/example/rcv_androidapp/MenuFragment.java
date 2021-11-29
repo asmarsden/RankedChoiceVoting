@@ -81,7 +81,7 @@ public class MenuFragment extends Fragment {
                 linearLayout.addView(line);
 
                 linearLayout.setOnClickListener(view1 -> NavHostFragment.findNavController(MenuFragment.this)
-                        .navigate(R.id.action_MenuFragment_to_CreatePollFragment));
+                        .navigate(R.id.action_MenuFragment_to_AdminViewFragment));
 
                 LinearLayout pollList = (LinearLayout)binding.scrollView.getChildAt(0);
                 pollList.addView(linearLayout);
