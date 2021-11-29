@@ -36,7 +36,7 @@ public class CreatePollFragment extends Fragment {
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
         binding = FragmentCreatePollBinding.inflate(inflater, container, false);
@@ -117,7 +117,7 @@ public class CreatePollFragment extends Fragment {
 
         call.clone().enqueue(new Callback<Poll>() {
             @Override
-            public void onResponse(Call<Poll> call, Response<Poll> response) {
+            public void onResponse(@NonNull Call<Poll> call, @NonNull Response<Poll> response) {
 
                 if (!response.isSuccessful()) {
                     System.out.println("Code: " + response.code());
@@ -161,7 +161,7 @@ public class CreatePollFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Poll> call, Throwable t) {
+            public void onFailure(@NonNull Call<Poll> call, @NonNull Throwable t) {
                 System.out.println(t.getMessage());
             }
         });
