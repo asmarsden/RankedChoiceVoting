@@ -5,7 +5,8 @@ import { ViewPollComponent } from 'src/app/components/view-poll/view-poll.compon
 
 const routes: Routes = [
   { path: 'add-ballot', component: AddBallotComponent },
-  { path: 'view-poll', component: ViewPollComponent }
+  { path: 'view-poll', component: ViewPollComponent },
+  { path: '', redirectTo: 'add-ballot', pathMatch: 'full' }
   //might need a path for homepage but im not worried abt that right now 
 ];
 

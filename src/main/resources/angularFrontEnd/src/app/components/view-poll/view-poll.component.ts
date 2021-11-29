@@ -39,6 +39,8 @@ export class ViewPollComponent implements OnInit {
         this.logger.log(this.pollData.urlCode);
         this.pollData.candidates = test.candidates;
         this.logger.log(this.pollData.candidates);
+        this.pollData.winner = test.winner;
+        this.logger.log(this.pollData.winner);
        }); 
 
   }
