@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,7 +25,7 @@ public class PollDTO
     private boolean requireName;
     private String password;
     private String[] candidates;
-    private List<String> ballots;
+    private List<String> ballots = new ArrayList<String>();;
     private boolean status = true;
     private String winner = "";
 
