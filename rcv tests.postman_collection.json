@@ -1,0 +1,664 @@
+{
+	"info": {
+		"_postman_id": "395c47a2-4c89-48f4-b372-2604bc0fbc31",
+		"name": "rcv tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create poll",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"urlcode\", jsonData.urlCode);\r",
+							"pm.globals.set(\"admincode\", jsonData.adminCode);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{      \r\n    \"adminCode\": \"testAislinnMarsden\",\r\n    \"question\": \"Where should we eat today?\",\r\n    \"candidates\": [\r\n        \"Papa John's\",\r\n        \"Pizza Hut\",\r\n        \"Taco Bell\",\r\n        \"Sushi Pier\",\r\n        \"Surin Thai\",\r\n        \"McDonald's\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"voter 1\",\r\n\"ranking\": [0,2,1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"vote"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"voter 2\",\r\n\"ranking\": [0,3,2]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"vote"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"voter 3\",\r\n\"ranking\": [1, 2, 3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"vote"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"voter 4\",\r\n\"ranking\": [4,2,1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"vote"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"voter 5\",\r\n\"ranking\": [0,4,1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"vote"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote 6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"voter 6\",\r\n\"ranking\": [3, 2, 1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"vote"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote 7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"voter 7\",\r\n\"ranking\": [0,2,4]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"vote"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote 8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"voter 8\",\r\n\"ranking\": [3,0,1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"vote"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote 9",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"voter 9\",\r\n\"ranking\": [0,3,1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"vote"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote 10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"voter 10\",\r\n\"ranking\": [1, 0, 3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"vote"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "close poll",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Winner is Papa John's\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.winner).to.eql(\"Papa John's\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Number of ballots is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.ballots.length).to.eql(10);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/poll/{{urlcode}}/{{admincode}}/end",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"poll",
+						"{{urlcode}}",
+						"{{admincode}}",
+						"end"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aislinn",
+							"disabled": true
+						},
+						{
+							"key": "ranking",
+							"value": "[1, 2, 3]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
