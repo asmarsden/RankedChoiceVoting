@@ -52,30 +52,17 @@ public class CreatePollFragment extends Fragment {
         hideWarnings();
 
         binding.editTextPassword.setVisibility(View.GONE);
-        binding.checkBoxPasswordOption.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    binding.editTextPassword.setVisibility(View.VISIBLE);
-                } else {
-                    binding.editTextPassword.setVisibility(View.GONE);
-                }
+        binding.checkBoxPasswordOption.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                binding.editTextPassword.setVisibility(View.VISIBLE);
+            } else {
+                binding.editTextPassword.setVisibility(View.GONE);
             }
         });
 
-        binding.btnAddCandidate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createCandidate();
-            }
-        });
+        binding.btnAddCandidate.setOnClickListener(v -> createCandidate());
 
-        binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createPoll();
-            }
-        });
+        binding.btnSubmit.setOnClickListener(view1 -> createPoll());
     }
 
     @Override
@@ -220,12 +207,7 @@ public class CreatePollFragment extends Fragment {
         ImageButton newImageBtn = new ImageButton(getContext());
         newImageBtn.setImageResource(R.drawable.redx);
         newImageBtn.setBackgroundColor(0x00FFFFFF);
-        newImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tableLayout.removeView(newTableRow);
-            }
-        });
+        newImageBtn.setOnClickListener(v -> tableLayout.removeView(newTableRow));
         newTableRow.addView(newImageBtn);
 
         TextView newTxtView = new TextView(getContext());

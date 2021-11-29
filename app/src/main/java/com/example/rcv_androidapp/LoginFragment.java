@@ -30,13 +30,10 @@ public class LoginFragment extends Fragment {
 
         //I remove "android:onClick="gotoCreateAccount"" from the XML
         //not sure if this works yet still need to test
-        binding.txtCreateAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        binding.txtCreateAccount.setOnClickListener(view1 -> {
 //                NavHostFragment.findNavController(LoginFragment.this)
 //                        .navigate(R.id.action_LoginFragment_to_CreateAccountFragment);
 //                        .navigate(R.id.action_MenuFragment_to_CreatePollFragment);
-            }
         });
     }
 

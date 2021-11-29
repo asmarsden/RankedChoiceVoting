@@ -33,14 +33,11 @@ public class VoteFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //load in candidates from the provided codeUrl (develop later)
-        binding.btnGetCandidates.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String urlCode = binding.editTextUrlCode.getText().toString();
-                Poll thisPoll = new Poll();
-                thisPoll = getPoll(urlCode);
+        binding.btnGetCandidates.setOnClickListener(view1 -> {
+            String urlCode = binding.editTextUrlCode.getText().toString();
+            Poll thisPoll = new Poll();
+            thisPoll = getPoll(urlCode);
 
-            }
         });
     }
 

@@ -39,13 +39,8 @@ public class MenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.btnNewPoll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(MenuFragment.this)
-                        .navigate(R.id.action_MenuFragment_to_CreatePollFragment);
-            }
-        });
+        binding.btnNewPoll.setOnClickListener(view1 -> NavHostFragment.findNavController(MenuFragment.this)
+                .navigate(R.id.action_MenuFragment_to_CreatePollFragment));
 
         //load in all of the locally saved polls
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
