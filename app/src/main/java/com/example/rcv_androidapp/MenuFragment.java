@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,20 +60,33 @@ public class MenuFragment extends Fragment {
                 Boolean isActive = sharedPreferences.getBoolean(name + "_isActive", false);
 
                 //create card
-//                FrameLayout frameLayout = new FrameLayout(getContext());
-//                View line = new View(getContext());
-//                line.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 2));
-//                line.setBackgroundColor(0xFFD3D3D3);
-//                frameLayout.addView(line);
-//                //SpannableStringBuilder sb = new SpannableStringBuilder(question);
-//                //StyleSpan styleSpan = new StyleSpan(android.graphics.Typeface.BOLD);
-//                //sb.setSpan(styleSpan, 0, 4, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-//                TextView pollTitle = new TextView(getContext());
-//                pollTitle.setText(question);
-//                frameLayout.addView(pollTitle);
-//
-//
-//                binding.lytPolls.addView(frameLayout);
+                LinearLayout linearLayout = new LinearLayout(getContext());
+                linearLayout.setMinimumHeight(dpAsPixels(90));
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+
+                //SpannableStringBuilder sb = new SpannableStringBuilder(question); //This is needed to make text bold or italicized
+                //StyleSpan styleSpan = new StyleSpan(android.graphics.Typeface.BOLD);
+                //sb.setSpan(styleSpan, 0, 4, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+                TextView pollTitle = new TextView(getContext());
+                pollTitle.setTextSize(20);
+                pollTitle.setText(question);
+                linearLayout.addView(pollTitle);
+
+                TextView activeStatus = new TextView(getContext());
+                activeStatus.setTextSize(10);
+                activeStatus.setText(isActive.toString());
+                linearLayout.addView(activeStatus);
+
+                View line = new View(getContext());
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpAsPixels(1));
+                params.gravity = Gravity.BOTTOM;
+                line.setLayoutParams(params);
+                line.setBackgroundColor(0xFFD3D3D3);
+                linearLayout.addView(line);
+
+                LinearLayout pollList = (LinearLayout)binding.scrollView.getChildAt(0);
+                pollList.addView(linearLayout);
             }
         }
     }
@@ -81,5 +95,10 @@ public class MenuFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public int dpAsPixels(int n) {
+        float scale = getResources().getDisplayMetrics().density;
+        return (int)(n*scale + 0.5f);
     }
 }

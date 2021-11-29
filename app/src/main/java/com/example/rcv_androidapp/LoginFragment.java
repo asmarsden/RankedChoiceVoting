@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.rcv_androidapp.databinding.FragmentLoginBinding;
-import com.example.rcv_androidapp.databinding.FragmentVoteBinding;
 
 public class LoginFragment extends Fragment {
 

@@ -136,6 +136,7 @@ public class CreatePollFragment extends Fragment {
 
                 editor.putInt("totalPolls", totalPolls); //make sure this overwrites(?)
                 String name = "poll" + totalPolls.toString();
+                System.out.println(name);
                 editor.putBoolean(name, true); //whether or not it exists anymore
                 editor.putString(name + "_adminCode", pollResponse.getAdminCode());
                 editor.putString(name + "_urlCode", pollResponse.getUrlCode());
@@ -207,7 +208,7 @@ public class CreatePollFragment extends Fragment {
     }
 
     private TableRow createCandidate() {
-        TableLayout layout = binding.tableLayout;
+        TableLayout tableLayout = binding.tableLayout;
 
         TableRow newTableRow = new TableRow(getContext()); //just putting "getContext()" might not work.
         newTableRow.setGravity(Gravity.CENTER_VERTICAL);
@@ -223,7 +224,7 @@ public class CreatePollFragment extends Fragment {
         newImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                layout.removeView(newTableRow);
+                tableLayout.removeView(newTableRow);
             }
         });
         newTableRow.addView(newImageBtn);
@@ -237,7 +238,10 @@ public class CreatePollFragment extends Fragment {
         newTableRow.addView(newTxtView);
         newTxtView.setVisibility(View.GONE);
 
-        layout.addView(newTableRow);
+        tableLayout.addView(newTableRow);
+
+
+
         return newTableRow;
     }
 }
