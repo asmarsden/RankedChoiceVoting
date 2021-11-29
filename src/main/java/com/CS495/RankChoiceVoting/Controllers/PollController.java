@@ -29,7 +29,6 @@ public class PollController {
 	@GetMapping("/{urlCode}")
 	public PollDTO getPoll(@PathVariable("urlCode") String urlCode)
 	{	
-		System.out.println("test");
 		return pollService.getPoll(urlCode);
 	}
 	

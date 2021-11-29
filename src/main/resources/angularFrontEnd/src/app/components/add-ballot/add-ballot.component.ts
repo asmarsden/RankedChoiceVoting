@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { concat } from 'rxjs';
 import { Ballot } from 'src/app/models/ballot.model';
-
+import { Poll } from 'src/app/models/poll.model';
+import { PollService } from 'src/app/services/poll.service';
+import { BallotService } from 'src/app/services/ballot.service';
+import { LogService } from 'src/app/log.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-ballot',
@@ -10,25 +15,22 @@ import { Ballot } from 'src/app/models/ballot.model';
   styleUrls: ['./add-ballot.component.css']
 })
 export class AddBallotComponent implements OnInit {
-  pollData : any;
-  ballot = new Ballot();
+  pollData  = new Poll();
+  data: any;
+  voterName: any;
+  pollCode: string = '';
+  bal = new Ballot();
+  ballot: any;
 
-  constructor() { }
+  constructor(private http: HttpClient, private pollService: PollService, private route: ActivatedRoute, private router: Router, private logger: LogService, private ballotService: BallotService) { }
 
   ngOnInit(): void {
-    //grab poll code from url and fetch poll data
-    this.pollData = this.fetchData();
+    this.data = this.getPollData();
   }
 
   onSubmit(form : NgForm){  
-    //console.log(form.value);  
-    
     var choices = [];
-
-    for (const field in form.controls) { // 'field' is a string
-      //console.log(form.controls[field].value);
-      
-      
+    for (const field in form.controls) { //this for loop grabs all the choices chosen and plops em in an array
       if (field.substr(0,6) == 'Choice'){
         var value = form.controls[field].value;
 
@@ -36,36 +38,23 @@ export class AddBallotComponent implements OnInit {
           choices.push(form.controls[field].value);
       }  
     }
-    // console.log(choices);
-    // console.log(choices.length);
 
-    var ballot = {"parentPollCode": "abc", "name": "Chris", "ranking": choices};
+    this.ballot = {"parentPollCode": this.pollCode, "name": this.voterName, "ranking": choices};
 
-    console.log(ballot);
+    let balsub = this.ballotService.create(this.ballot, this.pollCode).subscribe(
+      (response)=>{
+        this.logger.log(response);
+       }); 
   }
 
   getPollData(){
-    
-    //console.log(this.pollData);
-  }
-
-  fetchData(){
-    //call service
-    return {
-      "adminCode" : "12345678",
-      "urlCode" : "87654321",
-      "question" : "What are the best things to do",
-      "requireName" : "false",
-      "password" : "",
-      "candidates" : [
-          "Eat Apple",
-          "Eat Banana",
-          "Drink Beer",
-          "Go Hiking",
-          "Ride a bike"
-      ],
-      "ballots" : [] as string[]
-    }
+    let testing = this.pollService.get(this.pollCode).subscribe(
+      (test)=>{
+        this.pollData.adminCode = test.adminCode;
+        this.pollData.question = test.question;
+        this.pollData.urlCode = test.urlCode;
+        this.pollData.candidates = test.candidates;
+       }); 
   }
 
 }

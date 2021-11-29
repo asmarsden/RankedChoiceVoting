@@ -1,11 +1,11 @@
-<!-- 
-<div>
-    <label for="pollCode">Enter Poll Code:</label>
-    <input type="text" id="pollCode">
+
+
+  <div>
+    <input type="text" id="pollCode" [(ngModel)]="pollCode">
     <button (click)="getPollData()" type="button" name="button">Get Poll Data</button>
   </div>
 
-  <br/> -->
+  <br/>
 
   <div *ngIf="pollData">
     <span>URL Code:  {{ pollData.urlCode }}</span>
@@ -49,7 +49,7 @@
         </p>-->
         <p>
             <label>Enter Name:</label>
-            <input type="text" name="voterName" id="voterName" ngModel>
+            <input type="text" name="voterName" id="voterName" [(ngModel)]="voterName" ngModel>
         </p>
         <p>
             <button type="submit">Submit Vote</button>

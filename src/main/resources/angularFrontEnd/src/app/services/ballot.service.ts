@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ballot } from '../models/ballot.model';
+import { LogService } from 'src/app/log.service';
+
 
 const baseUrl = 'http://localhost:8080/api/poll';
 //this baseUrl will have to change once this is ready for production
@@ -11,9 +13,9 @@ const baseUrl = 'http://localhost:8080/api/poll';
 })
 export class BallotService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private logger: LogService) { }
 
-  create(ballot: Ballot, id: any): Observable<any> {
+  create(ballot: any, id: any): Observable<any> {
     return this.http.post(`${baseUrl}/${id}/vote`, ballot); 
   }
 
