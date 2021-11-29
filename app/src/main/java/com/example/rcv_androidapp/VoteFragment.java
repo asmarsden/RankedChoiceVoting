@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.rcv_androidapp.databinding.FragmentMenuBinding;
 import com.example.rcv_androidapp.databinding.FragmentVoteBinding;
 
 import retrofit2.Call;
