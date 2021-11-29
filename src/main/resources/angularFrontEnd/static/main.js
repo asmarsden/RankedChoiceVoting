@@ -380,6 +380,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_components_view_poll_view_poll_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/components/view-poll/view-poll.component */ "go47");
 /* harmony import */ var src_app_components_add_ballot_add_ballot_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/components/add-ballot/add-ballot.component */ "8wg9");
 /* harmony import */ var src_app_log_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/log.service */ "0HyO");
+/* harmony import */ var _services_ballot_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/ballot.service */ "nSb+");
+
 
 
 
@@ -393,7 +395,7 @@ __webpack_require__.r(__webpack_exports__);
 class AppModule {
 }
 AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [src_app_log_service__WEBPACK_IMPORTED_MODULE_8__["LogService"]], imports: [[
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [src_app_log_service__WEBPACK_IMPORTED_MODULE_8__["LogService"], _services_ballot_service__WEBPACK_IMPORTED_MODULE_9__["BallotService"]], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
@@ -419,7 +421,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector
                     _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
                     _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"]
                 ],
-                providers: [src_app_log_service__WEBPACK_IMPORTED_MODULE_8__["LogService"]],
+                providers: [src_app_log_service__WEBPACK_IMPORTED_MODULE_8__["LogService"], _services_ballot_service__WEBPACK_IMPORTED_MODULE_9__["BallotService"]],
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
             }]
     }], null, null); })();
@@ -438,12 +440,18 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewPollComponent", function() { return ViewPollComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
-/* harmony import */ var src_app_services_poll_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/poll.service */ "Sh49");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var src_app_log_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/log.service */ "0HyO");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var src_app_models_poll_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/models/poll.model */ "wp/I");
+/* harmony import */ var src_app_models_ballot_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/ballot.model */ "EZAr");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var src_app_services_poll_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/poll.service */ "Sh49");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var src_app_log_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/log.service */ "0HyO");
+/* harmony import */ var src_app_services_ballot_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/ballot.service */ "nSb+");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
+
+
 
 
 
@@ -489,13 +497,16 @@ function ViewPollComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.pollData.candidates);
 } }
 class ViewPollComponent {
-    constructor(http, pollService, route, router, logger) {
+    constructor(http, pollService, route, router, logger, ballotService) {
         this.http = http;
         this.pollService = pollService;
         this.route = route;
         this.router = router;
         this.logger = logger;
+        this.ballotService = ballotService;
+        this.pollData = new src_app_models_poll_model__WEBPACK_IMPORTED_MODULE_1__["Poll"]();
         this.pollCode = '';
+        this.bal = new src_app_models_ballot_model__WEBPACK_IMPORTED_MODULE_2__["Ballot"]();
     }
     ngOnInit() {
         //this.pollCode = this.route.snapshot.params.id;
@@ -512,30 +523,30 @@ class ViewPollComponent {
         //     this.logger.log(error);
         //   }); 
         this.logger.log("Test");
-        this.pollData = this.fetchData();
-        this.pollData.urlCode = this.pollCode; //because logging is not working on the springboot side of things...
-        this.pollData.question = this.pollService.get(this.pollCode); //curious to see what this displays as
+        let testing = this.pollService.get(this.pollCode).subscribe((test) => {
+            this.logger.log(test);
+            this.pollData.adminCode = test.adminCode;
+            this.pollData.question = test.question;
+            this.pollData.urlCode = test.urlCode;
+            this.logger.log(this.pollData.urlCode);
+            this.pollData.candidates = test.candidates;
+            this.logger.log(this.pollData.candidates);
+        });
+        //this.pollData.urlCode = this.pollCode; //because logging is not working on the springboot side of things...
+        //this.pollData = this.pollService.get(this.pollCode); //curious to see what this displays as
+        // this.bal.ballotId = "123";
+        // this.bal.name = "asmarsden";
+        // this.bal.ranking = [1, 2, 3];
+        // this.bal.parentPollCode = "12345";
+        // this.bal.ballotCode = "18364";
+        // this.ballotService.create(this.bal, this.pollCode);
     }
     fetchData() {
-        this.logger.log(this.pollService.get(this.pollCode));
-        this.logger.log(this.pollCode);
-        return this.pollService.get(this.pollCode);
-        // return {
-        //   "adminCode" : "12345678",
-        //   "urlCode" : this.pollCode,
-        //   "question" : "What are the best things to do",
-        //   "requireName" : "false",
-        //   "password" : "",
-        //   "candidates" : [
-        //       "Eat Apple",
-        //       "Eat Banana",
-        //       "Drink Beer"
-        //   ],
-        //   "ballots" : [] as string[]
-        // }
+        // this.logger.log(this.pollService.get(this.pollCode));
+        this.logger.log("hmmmm");
     }
 }
-ViewPollComponent.ɵfac = function ViewPollComponent_Factory(t) { return new (t || ViewPollComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_poll_service__WEBPACK_IMPORTED_MODULE_2__["PollService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_log_service__WEBPACK_IMPORTED_MODULE_4__["LogService"])); };
+ViewPollComponent.ɵfac = function ViewPollComponent_Factory(t) { return new (t || ViewPollComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_poll_service__WEBPACK_IMPORTED_MODULE_4__["PollService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_log_service__WEBPACK_IMPORTED_MODULE_6__["LogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_ballot_service__WEBPACK_IMPORTED_MODULE_7__["BallotService"])); };
 ViewPollComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ViewPollComponent, selectors: [["app-view-poll"]], decls: 5, vars: 2, consts: [["type", "text", "id", "pollCode", 3, "ngModel", "ngModelChange"], ["type", "button", "name", "button", 3, "click"], [4, "ngIf"], [4, "ngFor", "ngForOf"]], template: function ViewPollComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "input", 0);
@@ -552,7 +563,7 @@ ViewPollComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.pollCode);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.pollData);
-    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ2aWV3LXBvbGwuY29tcG9uZW50LmNzcyJ9 */"] });
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_8__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ2aWV3LXBvbGwuY29tcG9uZW50LmNzcyJ9 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ViewPollComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -560,7 +571,47 @@ ViewPollComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
                 templateUrl: './view-poll.component.html',
                 styleUrls: ['./view-poll.component.css']
             }]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }, { type: src_app_services_poll_service__WEBPACK_IMPORTED_MODULE_2__["PollService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }, { type: src_app_log_service__WEBPACK_IMPORTED_MODULE_4__["LogService"] }]; }, null); })();
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }, { type: src_app_services_poll_service__WEBPACK_IMPORTED_MODULE_4__["PollService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }, { type: src_app_log_service__WEBPACK_IMPORTED_MODULE_6__["LogService"] }, { type: src_app_services_ballot_service__WEBPACK_IMPORTED_MODULE_7__["BallotService"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "nSb+":
+/*!********************************************!*\
+  !*** ./src/app/services/ballot.service.ts ***!
+  \********************************************/
+/*! exports provided: BallotService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BallotService", function() { return BallotService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+
+
+
+const baseUrl = 'http://localhost:8080/api/poll';
+//this baseUrl will have to change once this is ready for production
+class BallotService {
+    constructor(http) {
+        this.http = http;
+    }
+    create(ballot, id) {
+        return this.http.post(`${baseUrl}/${id}/vote`, ballot); //it doesnt like this data here; i dont think this is quite right
+    }
+    update(id, data) {
+        return this.http.put(`${baseUrl}/${id}`, data);
+    }
+}
+BallotService.ɵfac = function BallotService_Factory(t) { return new (t || BallotService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
+BallotService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: BallotService, factory: BallotService.ɵfac, providedIn: 'root' });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BallotService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+                providedIn: 'root'
+            }]
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }]; }, null); })();
 
 
 /***/ }),
@@ -602,6 +653,22 @@ AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineI
                 exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]]
             }]
     }], null, null); })();
+
+
+/***/ }),
+
+/***/ "wp/I":
+/*!**************************************!*\
+  !*** ./src/app/models/poll.model.ts ***!
+  \**************************************/
+/*! exports provided: Poll */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Poll", function() { return Poll; });
+class Poll {
+}
 
 
 /***/ }),

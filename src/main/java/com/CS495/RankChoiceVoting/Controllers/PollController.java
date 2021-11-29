@@ -17,7 +17,7 @@ import com.CS495.RankChoiceVoting.Services.PollService;
 
 @RestController
 @RequestMapping("/api/poll")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class PollController {
 	
 	@Autowired
@@ -28,7 +28,8 @@ public class PollController {
 	
 	@GetMapping("/{urlCode}")
 	public PollDTO getPoll(@PathVariable("urlCode") String urlCode)
-	{
+	{	
+		System.out.println("test");
 		return pollService.getPoll(urlCode);
 	}
 	

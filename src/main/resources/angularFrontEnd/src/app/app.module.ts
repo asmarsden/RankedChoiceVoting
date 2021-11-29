@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ViewPollComponent } from 'src/app/components/view-poll/view-poll.component';
 import { AddBallotComponent } from 'src/app/components/add-ballot/add-ballot.component';
 import { LogService } from 'src/app/log.service';
+import { BallotService } from './services/ballot.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { LogService } from 'src/app/log.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LogService],
+  providers: [LogService, BallotService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
