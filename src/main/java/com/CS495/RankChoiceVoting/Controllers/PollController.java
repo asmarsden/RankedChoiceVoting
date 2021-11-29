@@ -35,12 +35,14 @@ public class PollController {
 	@GetMapping(value = "/{urlCode}/{adminCode}")
 	public List<String> getNames(@PathVariable("urlCode") String urlCode, @PathVariable("adminCode") String adminCode)
 	{
+		
 		return pollService.getNames(urlCode, adminCode);
 	}
 	 
 	 @PostMapping (value = "/{urlCode}/{adminCode}/end")
 	 public PollDTO endPoll (@PathVariable("urlCode") String urlCode, @PathVariable("adminCode") String adminCode)
 	 {
+		 System.out.println(" calling ending poll service");
 		 return pollService.endPoll(urlCode, adminCode);
 	 }
 	 

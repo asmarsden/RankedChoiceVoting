@@ -1,6 +1,7 @@
 package com.CS495.RankChoiceVoting.Model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 //import java.util.Locale;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Poll {
   //public String askedBy; //creatorID / userID
   private boolean requireName;
   private boolean status = true;
-  private String winner;
+  private String winner = ""; //so its not null and gets put in the document in mongodb
   
   
   public String getWinner() {
@@ -42,13 +43,13 @@ private boolean isStatus() {
 
 private String password; //null if no password is required
   private String[] candidates;
-  private List<String> ballots;
+  private List<String> ballots = new ArrayList<String>();
   //public String createdAt;
   //public List<Vote> voteList;
   
   //public String pollCode; //for our identifying purposes
 
-  public Poll() {}
+  public Poll() {} //this.status = true;
 
 //  public Poll(String pollQuestion, String askedBy, List<Vote> votes) {
 //    this.pollQuestion = pollQuestion;

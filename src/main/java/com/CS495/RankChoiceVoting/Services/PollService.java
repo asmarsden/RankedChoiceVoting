@@ -17,6 +17,8 @@ public interface PollService {
 	public void deletePoll (PollDTO pollDTO);
 	
 	public PollDTO endPoll (String urlCode, String adminCode);
+	
+	public int calculateWinner(String urlCode);
 
 	public PollDTO getPoll(String urlCode);
 	

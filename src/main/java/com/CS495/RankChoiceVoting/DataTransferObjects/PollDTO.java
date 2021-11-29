@@ -25,17 +25,25 @@ public class PollDTO
     private String password;
     private String[] candidates;
     private List<String> ballots;
-    private boolean status;
+    private boolean status = true;
+    private String winner = "";
 
-    //public String getPollId() {
-     //   return pollId;
-   // }
-    //public void setPollId(String pollId) {
-     //   this.pollId = pollId;
-    //}/
+   
 
 
-    public String getAdminCode() {
+    public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	public String getWinner() {
+		return winner;
+	}
+	public void setWinner(String winner) {
+		this.winner = winner;
+	}
+	public String getAdminCode() {
 		return adminCode;
 	}
 	public void setAdminCode(String adminCode) {
