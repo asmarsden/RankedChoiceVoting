@@ -192,8 +192,7 @@ public class CreatePollFragment extends Fragment {
             binding.txtPasswordWarning.setVisibility(View.VISIBLE);
             anyErrors = true;
         }
-        if (anyErrors) return false;
-        else return true;
+        return !anyErrors;
     }
 
     private void hideWarnings() {
