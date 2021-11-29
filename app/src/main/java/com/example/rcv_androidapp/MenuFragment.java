@@ -80,6 +80,9 @@ public class MenuFragment extends Fragment {
                 line.setBackgroundColor(0xFFD3D3D3);
                 linearLayout.addView(line);
 
+                linearLayout.setOnClickListener(view1 -> NavHostFragment.findNavController(MenuFragment.this)
+                        .navigate(R.id.action_MenuFragment_to_CreatePollFragment));
+
                 LinearLayout pollList = (LinearLayout)binding.scrollView.getChildAt(0);
                 pollList.addView(linearLayout);
             }
