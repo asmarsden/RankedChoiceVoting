@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_MenuFragment_to_CreatePollFragment"
             app:destination="@id/CreatePollFragment" />
+        <action
+            android:id="@+id/action_MenuFragment_to_AdminViewFragment"
+            app:destination="@id/AdminViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/CreatePollFragment"
@@ -21,6 +24,15 @@
         tools:layout="@layout/fragment_create_poll">
         <action
             android:id="@+id/action_CreatePollFragment_to_MenuFragment"
+            app:destination="@id/MenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AdminViewFragment"
+        android:name="com.example.rcv_androidapp.CreatePollFragment"
+        android:label="@string/third_fragment_label"
+        tools:layout="@layout/fragment_admin_view">
+        <action
+            android:id="@+id/action_AdminViewFragment_to_MenuFragment"
             app:destination="@id/MenuFragment" />
     </fragment>
 
