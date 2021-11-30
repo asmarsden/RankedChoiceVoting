@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Poll } from '../models/poll.model';
 import { Ballot } from '../models/ballot.model';
 
-const baseUrl = 'http://rankchoicevoting.herokuapp.com/api/poll';
+const baseUrl = 'http://rankedchoicevoting.herokuapp.com/api/poll';
 
 @Injectable({
   providedIn: 'root'

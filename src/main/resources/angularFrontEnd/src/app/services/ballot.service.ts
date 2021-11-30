@@ -5,7 +5,7 @@ import { Ballot } from '../models/ballot.model';
 import { LogService } from 'src/app/log.service';
 
 
-const baseUrl = 'http://rankchoicevoting.herokuapp.com/api/poll';
+const baseUrl = 'http://rankedchoicevoting.herokuapp.com/api/poll';
 
 @Injectable({
   providedIn: 'root'
