@@ -1,5 +1,7 @@
 package com.example.rcv_androidapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,14 @@ public class AdminViewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //load info in
+        final String name = getArguments().getString("name");
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+        String adminCode = sharedPreferences.getString(name + "_adminCode", "");
+        String urlCode = sharedPreferences.getString(name + "_urlCode", "");
+        String question = sharedPreferences.getString(name + "_question", "");
+        Boolean isActive = sharedPreferences.getBoolean(name + "_isActive", false);
+        binding.textView.setText(question);
     }
 
     @Override
