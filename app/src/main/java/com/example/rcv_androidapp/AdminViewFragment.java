@@ -50,7 +50,7 @@ public class AdminViewFragment extends Fragment {
         binding.textView.setText(question);
         binding.btnCopyLink.setOnClickListener(v -> {
             ClipboardManager clipboard = (ClipboardManager)getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText("link", "http://rankchoicevoting.herokuapp.com");
+            ClipData clip = ClipData.newPlainText("link", "http://rankedchoicevoting.herokuapp.com");
             clipboard.setPrimaryClip(clip);
             Toast toast = Toast.makeText(getContext(), "Coped to clipboard", Toast.LENGTH_SHORT);
             toast.show();
