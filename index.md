@@ -12,9 +12,9 @@ From club elections, to friend groups choosing where to eat for lunch, ranked ch
 
 However, at the moment there are no fast, seamless options for implementing ranked choice voting in a casual or semi-casual setting. This project was created to remedy that, and give anyone the option to use ranked choice voting with just a few taps of a screen. 
 
-#### Watch this video to see how it works! 
+#### <a href="https://www.youtube.com/watch?v=vXelDVvME8I/">Watch this video to see how it works!</a>
 
-//video not complete yet
+
 
 
 ## <a href="https://asmarsden.github.io/RCAteamDetails/">Meet the team!</a>
