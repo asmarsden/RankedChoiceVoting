@@ -45,18 +45,6 @@
 
                 </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="90dp">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_gravity="bottom"
-                    android:background="#D3D3D3" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
     </ScrollView>

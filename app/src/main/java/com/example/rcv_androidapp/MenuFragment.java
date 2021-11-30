@@ -52,7 +52,8 @@ public class MenuFragment extends Fragment {
                 String adminCode = sharedPreferences.getString(name + "_adminCode", "");
                 String urlCode = sharedPreferences.getString(name + "_urlCode", "");
                 String question = sharedPreferences.getString(name + "_question", "");
-                Boolean isActive = sharedPreferences.getBoolean(name + "_isActive", false);
+                Boolean isActive = sharedPreferences.getBoolean(name + "_status", false);
+                String winner = sharedPreferences.getString(name + "_winner", "");
 
                 //create card
                 LinearLayout linearLayout = new LinearLayout(getContext());

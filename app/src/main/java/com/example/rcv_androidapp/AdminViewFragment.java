@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.rcv_androidapp.databinding.FragmentAdminViewBinding;
 
@@ -44,7 +45,8 @@ public class AdminViewFragment extends Fragment {
         String adminCode = sharedPreferences.getString(name + "_adminCode", "");
         String urlCode = sharedPreferences.getString(name + "_urlCode", "");
         String question = sharedPreferences.getString(name + "_question", "");
-        Boolean isActive = sharedPreferences.getBoolean(name + "_isActive", false);
+        boolean status = sharedPreferences.getBoolean(name + "_status", false);
+        String winner = sharedPreferences.getString(name + "_winner", "");
         binding.textView.setText(question);
         binding.btnCopyLink.setOnClickListener(v -> {
             ClipboardManager clipboard = (ClipboardManager)getContext().getSystemService(Context.CLIPBOARD_SERVICE);
@@ -62,8 +64,22 @@ public class AdminViewFragment extends Fragment {
             toast.show();
         });
         binding.btnEndPoll.setOnClickListener(v -> {
-            endPoll(urlCode, adminCode);
+            endPoll(urlCode, adminCode, name);
         });
+        binding.btnDeletePoll.setOnClickListener(v -> {
+            //delete poll
+            SharedPreferences sharedPreferencesSaver = getContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferencesSaver.edit();
+            editor.putBoolean(name, false);
+            editor.apply();
+            NavHostFragment.findNavController(AdminViewFragment.this)
+                    .navigate(R.id.action_AdminViewFragment_to_MenuFragment);
+        });
+        if(status) {
+            binding.btnDeletePoll.setVisibility(View.GONE);
+        } else {
+            binding.btnEndPoll.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -72,10 +88,10 @@ public class AdminViewFragment extends Fragment {
         binding = null;
     }
 
-    private void endPoll(String urlCode, String adminCode) {
+    private void endPoll(String urlCode, String adminCode, String name) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/") //local
-//                .baseUrl("http://rankchoicevoting.herokuapp.com/") //live
+//                .baseUrl("http://10.0.2.2:8080/") //local
+                .baseUrl("http://rankchoicevoting.herokuapp.com/") //live
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -91,7 +107,11 @@ public class AdminViewFragment extends Fragment {
                     return;
                 }
 
-                Poll pollResponse = response.body();
+                //Make poll inactive
+                SharedPreferences sharedPreferencesSaver = getContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferencesSaver.edit();
+                editor.putBoolean(name + "_status", false);
+                editor.apply();
             }
 
             @Override
@@ -99,5 +119,9 @@ public class AdminViewFragment extends Fragment {
                 System.out.println(t.getMessage());
             }
         });
+    }
+
+    private void loadPage() {
+
     }
 }

@@ -8,7 +8,7 @@ public class Poll {
     private String adminCode;
     private String urlCode;
     private String question;
-    private boolean isActive;
+    private boolean status;
     private boolean requireName;
     private String password;
     private String[] candidates;
@@ -42,11 +42,11 @@ public class Poll {
         this.question = question;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public boolean getStatus() {
+        return status;
     }
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setStatus(boolean bool) {
+        status = bool;
     }
 
     public boolean isRequireName() {

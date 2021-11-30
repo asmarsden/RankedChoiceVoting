@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.rcv_androidapp.databinding.FragmentCreatePollBinding;
 import com.google.android.material.textfield.TextInputEditText;
@@ -95,8 +96,8 @@ public class CreatePollFragment extends Fragment {
         }
         //POST
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/") //local
-//                .baseUrl("http://rankchoicevoting.herokuapp.com/") //live
+//                .baseUrl("http://10.0.2.2:8080/") //local
+                .baseUrl("http://rankchoicevoting.herokuapp.com/") //live
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -129,23 +130,12 @@ public class CreatePollFragment extends Fragment {
                 editor.putString(name + "_adminCode", pollResponse.getAdminCode());
                 editor.putString(name + "_urlCode", pollResponse.getUrlCode());
                 editor.putString(name + "_question", pollResponse.getQuestion());
-                editor.putBoolean(name + "_isActive", pollResponse.isActive());
+                editor.putBoolean(name + "_status", pollResponse.getStatus());
 
                 editor.apply();
 
-//                String content = "";
-//                content += "adminCode: " + pollResponse.getAdminCode() + "\n";
-//                content += "urlCode: " + pollResponse.getUrlCode() + "\n";
-//                content += "question: " + pollResponse.getQuestion() + "\n";
-//                content += "isActive?: " + pollResponse.isActive() + "\n";
-//                content += "requireName?: " + pollResponse.isRequireName() + "\n";
-//                content += "password: " + pollResponse.getPassword() + "\n";
-//                content += "candidates: " + "\n";
-//                for (String candidate : pollResponse.getCandidates()) {
-//                    content += candidate + "\n";
-//                }
-//                content += "\n";
-//                System.out.println(content);
+                NavHostFragment.findNavController(CreatePollFragment.this)
+                        .navigate(R.id.action_CreatePollFragment_to_MenuFragment);
             }
 
             @Override
@@ -221,8 +211,6 @@ public class CreatePollFragment extends Fragment {
         newTxtView.setVisibility(View.GONE);
 
         tableLayout.addView(newTableRow);
-
-
 
         return newTableRow;
     }
