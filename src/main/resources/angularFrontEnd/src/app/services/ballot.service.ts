@@ -5,8 +5,7 @@ import { Ballot } from '../models/ballot.model';
 import { LogService } from 'src/app/log.service';
 
 
-const baseUrl = 'http://localhost:8080/api/poll';
-//this baseUrl will have to change once this is ready for production
+const baseUrl = 'http://rankchoicevoting.herokuapp.com/api/poll';
 
 @Injectable({
   providedIn: 'root'

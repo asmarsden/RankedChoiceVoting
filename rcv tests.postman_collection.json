@@ -40,13 +40,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll",
+					"raw": "{{url}}api/poll",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll"
 					]
 				}
@@ -81,13 +79,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"raw": "{{url}}api/poll/{{urlcode}}/vote",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"vote"
@@ -136,13 +132,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"raw": "{{url}}api/poll/{{urlcode}}/vote",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"vote"
@@ -191,13 +185,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"raw": "{{url}}api/poll/{{urlcode}}/vote",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"vote"
@@ -246,13 +238,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"raw": "{{url}}api/poll/{{urlcode}}/vote",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"vote"
@@ -301,13 +291,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"raw": "{{url}}api/poll/{{urlcode}}/vote",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"vote"
@@ -356,13 +344,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"raw": "{{url}}api/poll/{{urlcode}}/vote",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"vote"
@@ -411,13 +397,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"raw": "{{url}}api/poll/{{urlcode}}/vote",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"vote"
@@ -466,13 +450,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"raw": "{{url}}api/poll/{{urlcode}}/vote",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"vote"
@@ -521,13 +503,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"raw": "{{url}}api/poll/{{urlcode}}/vote",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"vote"
@@ -576,13 +556,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/vote",
+					"raw": "{{url}}api/poll/{{urlcode}}/vote",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"vote"
@@ -632,13 +610,11 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/poll/{{urlcode}}/{{admincode}}/end",
+					"raw": "{{url}}api/poll/{{urlcode}}/{{admincode}}/end",
 					"host": [
-						"localhost"
+						"{{url}}api"
 					],
-					"port": "8080",
 					"path": [
-						"api",
 						"poll",
 						"{{urlcode}}",
 						"{{admincode}}",
