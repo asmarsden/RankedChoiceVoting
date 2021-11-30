@@ -15,7 +15,7 @@ import com.CS495.RankChoiceVoting.Services.BallotService;
 
 @RestController
 @RequestMapping("api/poll")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:8080")
 public class BallotController {
 	
 	@Autowired
