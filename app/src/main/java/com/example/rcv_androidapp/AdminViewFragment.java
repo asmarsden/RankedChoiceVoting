@@ -77,8 +77,10 @@ public class AdminViewFragment extends Fragment {
         });
         if(status) {
             binding.btnDeletePoll.setVisibility(View.GONE);
+            binding.txtWinner.setVisibility(View.GONE);
         } else {
             binding.btnEndPoll.setVisibility(View.GONE);
+            binding.txtWinner.setText("Winner: " + winner);
         }
     }
 
@@ -117,6 +119,10 @@ public class AdminViewFragment extends Fragment {
                 editor.putBoolean(name + "_status", false);
                 editor.putString(name + "_winner", winner);
                 editor.apply();
+                binding.btnDeletePoll.setVisibility(View.VISIBLE);
+                binding.btnEndPoll.setVisibility(View.GONE);
+                binding.txtWinner.setVisibility(View.VISIBLE);
+                binding.txtWinner.setText("Winner: " + winner);
             }
 
             @Override

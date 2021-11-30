@@ -26,6 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:gravity="center"
+                    android:layout_gravity="top"
                     android:orientation="horizontal"
                     android:background="#FF12BA9E">
 

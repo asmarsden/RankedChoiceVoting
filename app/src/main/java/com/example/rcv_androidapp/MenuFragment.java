@@ -56,8 +56,8 @@ public class MenuFragment extends Fragment {
 
                 //create card
                 LinearLayout linearLayout = new LinearLayout(getContext());
-                LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpAsPixels(90));
-                linearLayoutParams.gravity = Gravity.CENTER_VERTICAL;
+                LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                linearLayout.setMinimumHeight(dpAsPixels(90));
                 linearLayout.setOrientation(LinearLayout.VERTICAL);
                 linearLayout.setLayoutParams(linearLayoutParams);
 
@@ -91,7 +91,6 @@ public class MenuFragment extends Fragment {
                 View line = new View(getContext());
                 LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpAsPixels(1));
                 lineParams.gravity = Gravity.BOTTOM;
-                line.setLayoutParams(lineParams);
                 line.setBackgroundColor(0xFFD3D3D3);
                 line.setLayoutParams(lineParams);
                 linearLayout.addView(line);

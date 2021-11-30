@@ -125,7 +125,6 @@ public class CreatePollFragment extends Fragment {
 
                 editor.putInt("totalPolls", totalPolls); //make sure this overwrites(?)
                 String name = "poll" + totalPolls.toString();
-                System.out.println(name);
                 editor.putBoolean(name, true); //whether or not it exists anymore
                 editor.putString(name + "_adminCode", pollResponse.getAdminCode());
                 editor.putString(name + "_urlCode", pollResponse.getUrlCode());
