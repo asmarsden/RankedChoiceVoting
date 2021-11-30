@@ -13,6 +13,7 @@ public class Poll {
     private String password;
     private String[] candidates;
     private List<Ballot> ballots;
+    private String winner;
 
     public String getPollId() {
         return pollId;
@@ -75,5 +76,12 @@ public class Poll {
     }
     public void setBallots(List<Ballot> ballots) {
         this.ballots = ballots;
+    }
+
+    public String getWinner() {
+        return winner;
+    }
+    public void setWinner(String winner) {
+        this.winner = winner;
     }
 }

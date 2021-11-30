@@ -1,5 +1,6 @@
 package com.example.rcv_androidapp;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,13 +11,11 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -52,33 +51,49 @@ public class MenuFragment extends Fragment {
                 String adminCode = sharedPreferences.getString(name + "_adminCode", "");
                 String urlCode = sharedPreferences.getString(name + "_urlCode", "");
                 String question = sharedPreferences.getString(name + "_question", "");
-                Boolean isActive = sharedPreferences.getBoolean(name + "_status", false);
+                boolean status = sharedPreferences.getBoolean(name + "_status", false);
                 String winner = sharedPreferences.getString(name + "_winner", "");
 
                 //create card
                 LinearLayout linearLayout = new LinearLayout(getContext());
-                linearLayout.setMinimumHeight(dpAsPixels(90));
+                LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpAsPixels(90));
+                linearLayoutParams.gravity = Gravity.CENTER_VERTICAL;
                 linearLayout.setOrientation(LinearLayout.VERTICAL);
+                linearLayout.setLayoutParams(linearLayoutParams);
 
                 //SpannableStringBuilder sb = new SpannableStringBuilder(question); //This is needed to make text bold or italicized
                 //StyleSpan styleSpan = new StyleSpan(android.graphics.Typeface.BOLD);
                 //sb.setSpan(styleSpan, 0, 4, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 
                 TextView pollTitle = new TextView(getContext());
-                pollTitle.setTextSize(20);
+                pollTitle.setTextSize(30);
                 pollTitle.setText(question);
+                pollTitle.setTextColor(0xFF000000);
+                LinearLayout.LayoutParams pollTitleParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                pollTitleParams.setMarginStart(dpAsPixels(15));
+                pollTitleParams.gravity = Gravity.CENTER_VERTICAL;
+                pollTitle.setLayoutParams(pollTitleParams);
                 linearLayout.addView(pollTitle);
 
                 TextView activeStatus = new TextView(getContext());
-                activeStatus.setTextSize(10);
-                activeStatus.setText(isActive.toString());
+                activeStatus.setTextSize(20);
+                if (status) {
+                    activeStatus.setText("Active");
+                } else {
+                    activeStatus.setText("Winner: " + winner);
+                }
+                LinearLayout.LayoutParams activeStatusParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                activeStatusParams.setMarginStart(dpAsPixels(15));
+                activeStatusParams.gravity = Gravity.CENTER_VERTICAL;
+                activeStatus.setLayoutParams(activeStatusParams);
                 linearLayout.addView(activeStatus);
 
                 View line = new View(getContext());
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpAsPixels(1));
-                params.gravity = Gravity.BOTTOM;
-                line.setLayoutParams(params);
+                LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpAsPixels(1));
+                lineParams.gravity = Gravity.BOTTOM;
+                line.setLayoutParams(lineParams);
                 line.setBackgroundColor(0xFFD3D3D3);
+                line.setLayoutParams(lineParams);
                 linearLayout.addView(line);
 
                 final Bundle bundle = new Bundle();
@@ -86,8 +101,7 @@ public class MenuFragment extends Fragment {
                 linearLayout.setOnClickListener(view1 -> NavHostFragment.findNavController(MenuFragment.this)
                         .navigate(R.id.action_MenuFragment_to_AdminViewFragment, bundle));
 
-                LinearLayout pollList = (LinearLayout)binding.scrollView.getChildAt(0);
-                pollList.addView(linearLayout);
+                binding.pollList.addView(linearLayout);
             }
         }
     }
@@ -98,7 +112,7 @@ public class MenuFragment extends Fragment {
         binding = null;
     }
 
-    public int dpAsPixels(int n) {
+    private int dpAsPixels(int n) {
         float scale = getResources().getDisplayMetrics().density;
         return (int)(n*scale + 0.5f);
     }

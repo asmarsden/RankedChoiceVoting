@@ -107,10 +107,15 @@ public class AdminViewFragment extends Fragment {
                     return;
                 }
 
+                Poll pollResponse = response.body();
+
+                //Get and store winner
+                String winner = pollResponse.getWinner();
                 //Make poll inactive
                 SharedPreferences sharedPreferencesSaver = getContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferencesSaver.edit();
                 editor.putBoolean(name + "_status", false);
+                editor.putString(name + "_winner", winner);
                 editor.apply();
             }
 

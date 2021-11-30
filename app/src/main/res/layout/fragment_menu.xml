@@ -15,15 +15,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/pollList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="top">
 
                 <LinearLayout
                     android:id="@+id/btnNewPoll"
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:background="#FF12BA9E">
 
