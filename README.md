@@ -1,5 +1,7 @@
 # RankedChoiceVoting
 
+This is currently hosted live at https://rankedchoicevoting.herokuapp.com/
+
 In order to run the angular side of this project locally, follow these steps:
 
 * Clone the repository
