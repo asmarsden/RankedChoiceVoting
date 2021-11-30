@@ -15,6 +15,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.rcv_androidapp.databinding.FragmentAdminViewBinding;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class AdminViewFragment extends Fragment {
 
     private FragmentAdminViewBinding binding;
@@ -42,7 +48,7 @@ public class AdminViewFragment extends Fragment {
         binding.textView.setText(question);
         binding.btnCopyLink.setOnClickListener(v -> {
             ClipboardManager clipboard = (ClipboardManager)getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText("link", "http://rankchoicevoting.herokuapp.com/add-ballot");
+            ClipData clip = ClipData.newPlainText("link", "http://rankchoicevoting.herokuapp.com");
             clipboard.setPrimaryClip(clip);
             Toast toast = Toast.makeText(getContext(), "Coped to clipboard", Toast.LENGTH_SHORT);
             toast.show();
@@ -55,11 +61,43 @@ public class AdminViewFragment extends Fragment {
             Toast toast = Toast.makeText(getContext(), "Coped to clipboard", Toast.LENGTH_SHORT);
             toast.show();
         });
+        binding.btnEndPoll.setOnClickListener(v -> {
+            endPoll(urlCode, adminCode);
+        });
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void endPoll(String urlCode, String adminCode) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:8080/") //local
+//                .baseUrl("http://rankchoicevoting.herokuapp.com/") //live
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        VotingApi votingApi = retrofit.create(VotingApi.class);
+        Call<Poll> call = votingApi.endPoll(urlCode, adminCode);
+
+        call.clone().enqueue(new Callback<Poll>() {
+            @Override
+            public void onResponse(@NonNull Call<Poll> call, @NonNull Response<Poll> response) {
+
+                if (!response.isSuccessful()) {
+                    System.out.println("Code: " + response.code());
+                    return;
+                }
+
+                Poll pollResponse = response.body();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Poll> call, @NonNull Throwable t) {
+                System.out.println(t.getMessage());
+            }
+        });
     }
 }

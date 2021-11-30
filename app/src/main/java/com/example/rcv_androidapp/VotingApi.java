@@ -18,4 +18,7 @@ public interface VotingApi {
 
     @POST("api/poll/{urlCode}/vote")
     Call<Ballot> castBallot(@Body Ballot ballot); //casts a ballot to the appropriate poll
+
+    @POST("api/poll/{urlCode}/{adminCode}/end")
+    Call<Poll> endPoll(@Path("urlCode") String urlCode, @Path("adminCode") String adminCode); //ends the poll
 }

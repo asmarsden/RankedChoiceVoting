@@ -23,6 +23,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -76,7 +77,7 @@ public class CreatePollFragment extends Fragment {
             return;
         }
         Poll newPoll = new Poll();
-        newPoll.setAdminCode("temporaryCreatorID"); //few ways we could deal with createId generation (finish later regardless)
+        newPoll.setAdminCode(generateRandomAdminCode()); //few ways we could deal with createId generation (finish later regardless)
         //no need to set urlCode here. server will do that for us.
         newPoll.setQuestion(binding.editTextPollQuestion.getText().toString());
         String[] candidates = new String[binding.tableLayout.getChildCount()];
@@ -94,8 +95,8 @@ public class CreatePollFragment extends Fragment {
         }
         //POST
         Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("http://10.0.2.2:8080/") //local
-                .baseUrl("http://rankchoicevoting.herokuapp.com/") //live
+                .baseUrl("http://10.0.2.2:8080/") //local
+//                .baseUrl("http://rankchoicevoting.herokuapp.com/") //live
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -224,5 +225,21 @@ public class CreatePollFragment extends Fragment {
 
 
         return newTableRow;
+    }
+
+    private String generateRandomAdminCode() { // difference is poll = length 8, vote length 10
+        int leftLimit = 48; // numeral '0'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 8;
+        Random random = new Random();
+
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+
+        //System.out.println(generatedString);
+        return generatedString;
     }
 }

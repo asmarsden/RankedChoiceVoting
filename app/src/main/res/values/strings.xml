@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RCV_androidApp</string>
+    <string name="app_name">Rank\'d</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">My Polls</string>
