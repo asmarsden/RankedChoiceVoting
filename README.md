@@ -17,3 +17,13 @@ In order to run the angular side of this project locally, follow these steps:
 
 
 In order to run the android side of this project locally, follow these steps: 
+
+* Clone the repository
+* Switch to the Android_App_Changes branch
+* Import the project into Android Studio IDE as a Gradle project
+* Open up the AVD Manager and create an emulator
+* Build the project
+* Run the project
+* Alternatively, you can build an APK by going to Build -> Build Bundles/APK -> Build APK
+* Upload the APK to a file sharing service such as Google Drive
+* Open the APK on an Android Device and download
