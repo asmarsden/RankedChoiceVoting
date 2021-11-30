@@ -6,7 +6,7 @@ Ranked choice voting is a method of voting that involves voting for not only a f
 
 With ranked choice voting, that isn't an issue. This is due to the logic behind ranked choice voting: a winner is not chosen until they have more than a certain percentage of votes, and each option with the lowest votes is thrown out and those votes reassigned to those voter's next best options until an option hits that percentage.
 
-This eliminates the splitting of votes in the majority of cases, and tends to yeild a more accurate portrayal of what the voters actually want in the first place.
+This eliminates the splitting of votes in the majority of cases, and tends to yield a more accurate portrayal of what the voters actually want in the first place.
 
 From club elections, to friend groups choosing where to eat for lunch, ranked choice voting can be extremely useful, but only if an easy way to create, share, and vote with such a system exists. 
 
