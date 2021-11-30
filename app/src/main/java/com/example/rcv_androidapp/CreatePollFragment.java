@@ -94,8 +94,8 @@ public class CreatePollFragment extends Fragment {
         }
         //POST
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/") //local
-//                .baseUrl("http://rankchoicevoting.herokuapp.com/") //live
+//                .baseUrl("http://10.0.2.2:8080/") //local
+                .baseUrl("http://rankchoicevoting.herokuapp.com/") //live
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
